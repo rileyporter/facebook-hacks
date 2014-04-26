@@ -258,7 +258,7 @@ function setFriend() {
     if (response && !response.error) {
       var data = response.data;
       console.debug(response.data);
-
+      console.log("FRIEND" + response.data);
       var x1 = Math.floor(Math.random()*data.length);
       var birthday = getBirthday(data[x1].id);
       while (birthday !== undefined && birthday.length < 7) { // get a friend with a birthday
