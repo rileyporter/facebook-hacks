@@ -52,6 +52,9 @@ function loadGame() {
 	$.getJSON("./gamestate.json", function(data){
 		console.log(data);
 		gameState = data;
+		// here be hacks, the start of game should be called after user logs in
+		// for dev purposes it's being called immediately after game is loaded.
+		$("#welcome").hide();// more hacks
 		startGame();
 	});
 }
@@ -91,21 +94,24 @@ function findState(id){
 
 // idk yo
 function postLogin() {
-  console.log("In my javascript file");
-  console.log(FB.getLoginStatus);
   FB.api('/me', function(response) {
-    console.log('Good to see you, ' + response.name + '.');
+    if (response && !response.error) {
+      console.log('Good to see you, ' + response.name + '.');
+      console.log('Your birthday is: ' + response.birthday + '.');
+      console.log('ID: ' + response.id);
+      console.log('TEAMS: ' + response.favorite_teams);
+    }
   });
-  document.getElementById("welcome").addClassName("hidden");
-  document.getElementById("game").removeClassName("hidden");
+  $("#welcome").addClass("hidden");
+  $("#game").removeClass("hidden");
 }
 
 /*** outdated by 'takeAction' ***/
 // process response from text box
 /*function processResponse() {
-  var target = document.getElementById("response");
+  var target = $("#response");
   console.log(target.value);
-  var story = document.getElementById("story_box").lastChild;
+  var story = $("#story_box").lastChild;
   story.innerHTML = target.value;
   target.value = "";
 }*/

@@ -6,7 +6,8 @@ body, input {
 }
 
 .hidden {
-  visibility: none;
+  display: none;
+
 }
 
 #main_window {
