@@ -123,16 +123,16 @@ function parseKeyword(keyword){
 			return getFriendBirthday();
 			break;
 		case "#firstArtist":
-			return getTwoArtists()[0];
+			return getTwoArtists()["artist1"];
 			break;
 		case "#secondArtist":
-			return getTwoArtists()[1];
+			return getTwoArtists()["artist2"];
 			break;
 		case "#firstBook":
-			return getTwoBooks[0];
+			return getTwoBooks["book1"];
 			break;
 		case "#secondBook":
-			return getTwoBooks()[1];
+			return getTwoBooks()["book2"];
 			break;
 		case "#significantOther":
 			return getSignificantOther();
