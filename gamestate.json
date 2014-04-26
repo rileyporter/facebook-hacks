@@ -1,19 +1,22 @@
 [
   {
   "id": "1",
-  "body": "You wake up in dank, dark room with no windows. The walls bleed, crawl and inch themselves around as if they were a collective of catepillars peeling off the fabric of a ficticious shag carpet, controlled by a shared consciousness. Woah. All you see in the room is a small table. You hear the feint sound of music coming from above you." {
+  "body": "You wake up in dank, dark room with no windows. The walls bleed, crawl and inch themselves around as if they were a collective of catepillars peeling off the fabric of a ficticious shag carpet, controlled by a shared consciousness. Woah. All you see in the room is a small table. You hear the feint sound of music coming from above you.", 
+  "actions": { 
     "look": {
-      "up" : "2"
+        "up" : "2"
     },
     "climb": {
       "table" : "3"
     }
   },
   "objects" : []
-},
+  },
+
 {
   "id": "2",
-  "body": "You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One you. The vent fits exactly one unit-'you'" {
+  "body": "You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One you. The vent fits exactly one unit-'you'",
+  "actions": {
     "climb": {
       "table" : "3"
     }
@@ -22,9 +25,10 @@
 },
 {
   "id": "3",
-  "body": "You scale the table. People say that Mt. Everestt is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent" {
-    "enter": {
-      "vent" : "5"
+  "body": "You scale the table. People say that Mt. Everestt is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent",
+  "actions": {
+      "enter": {
+        "vent" : "5"
     }
   },
   "objects" : []
