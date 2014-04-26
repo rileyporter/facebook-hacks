@@ -33,10 +33,6 @@ body, input {
   font-size: 1em;
 }
 
-#login {
-  margin-top: 45px;
-}
-
 p {
   border: 2px solid yellow;
   height: 250px;
