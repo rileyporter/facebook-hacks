@@ -30,6 +30,7 @@ function postLogin() {
       console.log('Good to see you, ' + response.name + '.');
       console.log('Your birthday is: ' + response.birthday + '.');
       console.log('ID: ' + response.id);
+      console.log('TEAMS: ' + response.favorite_teams);
     }
   });
   $("#welcome").addClass("hidden");
