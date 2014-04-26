@@ -148,7 +148,7 @@ function setSignificantOther() {
     if (response && !response.error) {
       // set up significant other
         userInfo.push({"significant_other" : response.significant_other});
-      }
+    }
   });
 }
 
@@ -205,7 +205,6 @@ function getBirthday(id) {
   FB.api('/' + id, function(response) {
     if (response && !response.error) {
         return response.birthday;
-      }
     }
   });
 }
