@@ -148,6 +148,7 @@ function setSignificantOther() {
     if (response && !response.error) {
       // set up significant other
         userInfo['significant_other'] = response.significant_other;
+        console.debug(response.significan_other);
     }
   });
 }
@@ -156,6 +157,8 @@ function setMusic() {
   FB.api('/me/music', function(response) {
     if (response && !response.error) {
       var data = response.data;
+      console.debug(response.data);
+
       var x1 = Math.floor(Math.random()*data.length);
       while (data[x1].category !== "Musician/band") {
         x1 = Math.floor(Math.random()*data.length);
@@ -167,6 +170,8 @@ function setMusic() {
       var object = [];
       object['artist1'] = data[x1].name;
       object['artist2'] = data[x2].name;
+      console.log("music: ");
+      console.debug(object);
       userInfo['music'] = object;
     }
   });
@@ -176,11 +181,15 @@ function setBooks() {
   FB.api('/me/books', function(response) {
     if (response && !response.error) {
       var data = response.data;
+      console.debug(response.data);
+
       var x1 = Math.floor(Math.random()*data.length);
       var x2 = Math.floor(Math.random()*data.length);
       var object = [];
       object['book1'] = data[x1].name;
       object['book2'] = data[x2].name;
+      console.log("books: ");
+      console.debug(object);
       userInfo['books'] = object;
     }
   });
@@ -190,6 +199,8 @@ function setFriend() {
   FB.api('/me/friends', function(response) {
     if (response && !response.error) {
       var data = response.data;
+      console.debug(response.data);
+
       var x1 = Math.floor(Math.random()*data.length);
       var birthday = getBirthday(data[x1].id);
       while (birthday !== undefined && birthday.length < 7) { // get a friend with a birthday
@@ -210,6 +221,8 @@ function setFriend() {
 function getBirthday(id) {
   FB.api('/' + id, function(response) {
     if (response && !response.error) {
+      console.debug(response.birthday);
+
         return response.birthday;
     }
   });
