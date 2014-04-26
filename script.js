@@ -201,8 +201,8 @@ function setFriend() {
 }
 
 // internal, please don't call.
-function getBirthday(var id) {
-  FB.api('/id', function(response) {
+function getBirthday(id) {
+  FB.api('/' + id, function(response) {
     if (response && !response.error) {
         return response.birthday;
       }
