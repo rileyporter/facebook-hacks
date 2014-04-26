@@ -33,24 +33,25 @@ $(document).ready(function() {
 
 // linked in by event register in html page... to my everlasting shame
 function takeAction(){
-	console.log("taking action..");
 	var response = $('#response').val()
 	$('#response').val("")
-	console.log(response);
-	console.log(defaultActions)
-	console.log($.inArray(response, defaultActions))
 
 	var command = response.split(/\s+/);
 	var action = command[0]
+
+  console.log("***** taking action with command = " + response + " *****");
+  console.log(currentState);
 
 	// handle generic commands
 	if($.inArray(action, defaultActions) >= 0) {
 		performDefaultAction(action, command);
 	} else {
     // consider each action
-    $.each(currentState['actions'], function(index, stateAction){
+    $.each(currentState['actions'], function(stateAction, objects){
 
-      console.log("considering action: " + response.substring(0, stateAction.length));
+      console.log("considering next action! (true val, followed by partial prompt)")
+      console.log(stateAction);
+      console.log(response.substring(0, stateAction.length));
 
       // if is a known action
       if(response.substring(0, stateAction.length) == stateAction){
