@@ -46,6 +46,7 @@ function takeAction(){
 	if($.inArray(action, defaultActions) >= 0) {
 		performDefaultAction(action, command);
 	} else {
+    var actionTaken = 0;
     // consider each action
     $.each(currentState['actions'], function(stateAction, objects){
 
@@ -59,8 +60,9 @@ function takeAction(){
         console.log("found action match = " + stateAction);
         console.log("provided object = " + object);
         console.log("available objects = ")
-        console.log(currentState[stateAction])
+        console.log(currentState['actions'][stateAction])
         if(currentState['actions'][stateAction][object] != undefined){
+          actionTaken ++;
           var nextState = findState(currentState['actions'][stateAction][object])
           currentState = nextState;
           renderState(nextState);
@@ -69,8 +71,9 @@ function takeAction(){
       }
     });
 
-
-	  reportInvalidAction();
+    if (actionTaken != 0){
+	     reportInvalidAction();
+    }
 	}
 
 }
