@@ -25,6 +25,10 @@ body, input {
   text-align: center;
 }
 
+#login {
+  width: 500px;
+}
+
 #welcome h1 {
   font-size: 2em;
 }

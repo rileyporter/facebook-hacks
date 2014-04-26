@@ -60,10 +60,7 @@
       // Here we run a very simple test of the Graph API after login is successful.
       // This testAPI() function is only called in those cases.
       function testAPI() {
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-          console.log('Good to see you, ' + response.name + '.');
-        });
+        postLogin();
       }
     </script>
 
@@ -76,8 +73,7 @@
         <h1>Welcome to Acid Trip Dream</h1>
         <h2>Enter if you dare...</h2>
       </div>
-      <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
-      <!-- <img id="login" src="facebook_login_buttons/active_600.png" alt="facebook login"> !-->
+      <fb:login-button show-faces="true" data-size="xlarge" id="login" max-rows="1"></fb:login-button>
     </div>
   </body>
 </html>
