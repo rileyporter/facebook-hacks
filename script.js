@@ -289,7 +289,7 @@ function setBooks() {
     }
 
     // chain all the network calls
-    setFriends();
+    setFriend();
   });
 }
 
