@@ -3,7 +3,7 @@ body {
   background-image:url('acid_dream.jpg');
   background-size: 100%;
   background-repeat:no-repeat;
-  color: #66FF33; /* green */
+  color: #FFA319; /* green */
   font-family: "Courier New", "Andale mono", monospace;
   font-size: 1em;
   font-weight: normal;
@@ -65,7 +65,7 @@ input {
   border: 2px solid #FFA319; /* gold */
   background-color: black;
   opacity: 0.9;
-  color: #66FF33; /* green */
+  color: #FFA319; /* green #66FF33 */
 }
 
 #story_box {
