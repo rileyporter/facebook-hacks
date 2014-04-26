@@ -81,10 +81,11 @@
 },
 {
   "id": "7",
-  "body": "As you crawl over the grate, the weak rusty metal gives way. You crash through vent and land face first on the ground, horribly crippling your already sad figure. As you regain your composure you realize that you are in an open hallway. There is a super sexy door in front of you. Its like, super sexy. Like, okay, seriously... picture a door, then picture a sexy door... the door that is in front of you is the sexy door (sexy-door). You see 3 other doors - one to your left (left-door), one to your right (right-door) and one directly behind (back-door).",
+  "body": "As you crawl over the grate, the weak rusty metal gives way. You crash through vent and land face first on the ground, horribly crippling your already sad figure. As you regain your composure you realize that you are in an open hallway. There is a super sexy door in front of you. Its like, super sexy. Like, okay, seriously... picture a door, then picture a sexy door... the door that is in front of you is the sexy door (sexy-door). You see 3 other doors - one to your left (left-door), one to your right (right-door) and one directly behind (back-door). There is also probably a sexy bookcase or something that you could also check out.",
   "actions": {
     "go": {
       "back" : "5"
+      "to bookcase" : "28"
     },
     "open": {
       "sexy-door" : "32",
@@ -158,9 +159,6 @@
       },
       "shine" : {
         "flashlight" : "18"
-      },
-      "turn on" : {
-        "flashlight" : "18"
       }
     },
     "objects" : []
@@ -182,10 +180,10 @@
     "id" : "18",
     "body" : "You shine your flashlight around the room, and everywhere the light touches, the cockroaches scatter. You see a piece of key hanging on a hook on the far wall.",
     "actions" : {
-      "walk" : {
-        "to wall" : "19",
-        "to key piece" : "19",
-        "to key" : "19"
+      "approach" : {
+        "wall" : "19",
+        "key piece" : "19",
+        "key" : "19"
       },
       "go" : {
         "back" : "7"
@@ -254,8 +252,8 @@
     "id" : "24",
     "body" : "You walk over to #friend and say 'sup gangstah?' Your friend looks deep into your eyes, straight down into your soul and quietly whispers, 'tell me what my birthdate is in 'birthday is MM/DD/YY' format'. Maybe it's time you made some new friends.",
     "actions" : {
-      "birthday is" : {
-        "#birthday" : "25",
+      "answer" : {
+        "is #birthday" : "25",
         "birthday2" : "26"
       },
       "go" : {
@@ -280,8 +278,8 @@
     "id" : "26",
     "body" : "still doing the soul-staring thing, #friend whispers, 'incorrect'.",
     "actions" : {
-      "birthday is" : {
-        "#birthday" : "25",
+      "answer" : {
+        "is #birthday" : "25",
         "birthday2" : "26"
       },
       "go" : {
@@ -364,6 +362,7 @@
     "actions" : {
       "say" : {
         "yup" : "35",
+        "yes" : "35",
         "no" : "35"
       }
     },
@@ -373,9 +372,9 @@
     "id" : "34",
     "body" : "You unlock the sexy gilded door, step inside, and the door slams shut and locks behind you. You are now in another dank less-sexy concrete room. There is a pool of water accumulating from a pipe dripping on the ground. You see #significant_other sitting in the middle of the floor gesturing for you to come to them.",
     "actions" : {
-      "walk" : {
-        "to #significant_other" : "33",
-        "to pipe" : "36"
+      "approach" : {
+        "#significant_other" : "33",
+        "pipe" : "36"
       }
     },
     "objects" : []
@@ -384,8 +383,8 @@
     "id" : "35",
     "body" : "'Well, either way I'm going to tell you', you're evil, evil nemesis said, 'We are in...YOUR MIND! And now I've trapped you here in this dank dream world forever! No doors out of this room!'",
     "actions" : {
-      "walk" : {
-        "to pipe" : "36"
+      "approach" : {
+        "pipe" : "36"
       },
       "punch" : {
         "#enemy" : "37"
