@@ -217,7 +217,7 @@ function setSignificantOther() {
         userInfo['significant_other'] = response.significant_other.name;
       }
     } else {
-        userInfo['significant_other'] = "Brad Pitt";
+        userInfo['significant_other'] = "George Clooney Error";
     }
   });
 }
@@ -236,11 +236,22 @@ function setMusic() {
         console.log("choosing new music 2");
         x2 = Math.floor(Math.random()*data.length);
       }
+      if (data[x1] === undefined || data[x2] === undefined) {
+        var object = [];
+        object['artist1'] = "Earth Wind and Fire";
+        object['artist2'] = "Macklemore";
+        userInfo['music'] = object;
+      }
       var object = [];
       object['artist1'] = data[x1].name;
       object['artist2'] = data[x2].name;
       console.log("music: ");
       console.debug(object);
+      userInfo['music'] = object;
+    } else {
+      var object = [];
+      object['artist1'] = "Earth Wind and Fire Error";
+      object['artist2'] = "Macklemore Error";
       userInfo['music'] = object;
     }
   });
@@ -256,11 +267,22 @@ function setBooks() {
         console.log("choosing a new book");
         x2 = Math.floor(Math.random()*data.length);
       }
+      if (data[x1] === undefined || data[x2] === undefined) {
+        var object = [];
+        object['book1'] = "Watership Down";
+        object['book2'] = "Men are from Mars, Women are from Venus";
+        userInfo['books'] = object;
+      }
       var object = [];
       object['book1'] = data[x1].name;
       object['book2'] = data[x2].name;
       console.log("books: ");
       console.debug(object);
+      userInfo['books'] = object;
+    } else {
+      var object = [];
+      object['book1'] = "Watership Down Error";
+      object['book2'] = "Men are from Mars, Women are from Venus Error";
       userInfo['books'] = object;
     }
   });
@@ -282,8 +304,19 @@ function setFriend() {
         console.log("choosing a new enemy");
         x2 = Math.floor(Math.random()*data.length);
       }
-      userInfo['friend'] = data[x1];
-      userInfo['enemy'] = data[x2];
+      if (data[x1] === undefined) {
+        userInfo['friend'] = "Carl Sagan";
+      } else {
+        userInfo['friend'] = data[x1];
+      }
+      if (data[x2] === undefined) {
+        userInfo['enemy'] = "Stephen Hawking";
+      } else {
+        userInfo['enemy'] = data[x2];
+      }
+    } else {
+      userInfo['enemy'] = "Stephen Hawking Error";
+      userInfo['friend'] = "Carl Sagan Error";
     }
   });
 }
