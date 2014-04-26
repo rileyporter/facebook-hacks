@@ -120,6 +120,7 @@ function startGame() {
 // simply involves copying state's body to the html page. In the future this is where
 // parsing in user specific data should happen.
 function renderState(state){
+	$("#prompt").html("What will you do?")
 	$("#story_box").html(state['body']);
 
 }
