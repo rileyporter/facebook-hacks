@@ -202,7 +202,7 @@ function postLogin() {
   FB.api('/me/permissions', function(response) {
     console.log(response);
   });
-  setSignificantOther();
+  //setSignificantOther();
 }
 
 function setSignificantOther() {
