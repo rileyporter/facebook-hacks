@@ -90,8 +90,9 @@ function reportInvalidAction(){
 // loads the game from our flat .json file. This method should almost certainly
 // be called first thing when page is loaded.
 function loadGame() {
+	console.log("about to request json");
 	$.getJSON("./gamestate.json", function(data){
-		console.log(data);
+		console.log("data imported");
 		gameState = data;
 		// here be hacks, the start of game should be called after user logs in
 		// for dev purposes it's being called immediately after game is loaded.

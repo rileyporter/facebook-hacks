@@ -1,19 +1,64 @@
 [
   {
-    "id": "start",
-    "body": "You awake in a room. to your left is a door, to your right is a window on the floor in front of you there lay two objects, a pen and a dime",
-    "actions" : {
-    	"open" : {
-    		"door" : "hallway",
-    		"window" : "outside"
-    	}
+  "id": "1",
+  "body": "You wake up in dank, dark room with no windows. The walls bleed, crawl and inch themselves around as if they were a collective of catepillars peeling off the fabric of a ficticious shag carpet, controlled by a shared consciousness. Woah. All you see in the room is a small table. You hear the feint sound of music coming from above you." {
+    "look": {
+      "up" : "2"
     },
-    "objects" : [
-    	"pen",
-    	"dime"
-    	]
-
+    "climb": {
+      "table" : "3"
+    }
   },
+  "objects" : []
+},
+{
+  "id": "2",
+  "body": "You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One you. The vent fits exactly one unit-'you'" {
+    "climb": {
+      "table" : "3"
+    }
+  },
+  "objects" : []
+},
+{
+  "id": "3",
+  "body": "You scale the table. People say that Mt. Everestt is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent" {
+    "enter": {
+      "vent" : "5"
+    }
+  },
+  "objects" : []
+},
+
+{
+  "id": "5",
+  "body": "You enter the dark vent. You feel the walls closing in on you like a python squeezing the life-force from a wee field-mouse. Ahead, you see a dim light of another grate.",
+  "actions": {
+    "crawl": {
+      "forward" : "6"
+    },
+    "go": {
+      "back" : "4"
+    }
+  },
+  "objects" : []
+},
+{
+  "id": "6",
+  "body": "As you crawl over the grate, the weak rusty metal gives way. You crash through vent and land face first on the ground, horribly crippling your already sad figure. As you regain your composure you realize that you are in an open hallway. There is a super sexy door in front of you. Its like, super sexy. Like, okay, seriously... picture a door, then picture a sexy door... the door that is in front of you is the sexy door (sexy-door). You see 3 other doors - one to your left (left-door), one to your right (right-door) and one directly behind (back-door).",
+  "actions": {
+    "go": {
+      "back" : "5"
+    },
+    "open": {
+      "sexy-door" : "32",
+      "right-door" : "21",
+      "left-door" : "16",
+      "back-door" : "10"
+    }
+  },
+  "objects" : []
+},
   {
   	"id" : "hallway",
   	"body": "you're in a hallway",
