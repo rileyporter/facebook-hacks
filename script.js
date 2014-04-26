@@ -165,7 +165,6 @@ function postLogin() {
       }
     }
   }
-  }
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
 }

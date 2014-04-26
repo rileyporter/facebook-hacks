@@ -1,5 +1,8 @@
-body, input {
-  background-color: black;
+
+body {
+  background-image:url('acid_dream.jpg');
+  background-size: 100%;
+  background-repeat:no-repeat;
   color: #00FF00;
   font-family: "Courier New", "Andale mono", monospace;
   font-size: 2em;
@@ -11,11 +14,16 @@ body, input {
 }
 
 #main_window {
+
   position: relative;
-  width: 700px;
+  width: 500px;
   margin: auto;
-  height: 600px;
-  border: 5px solid yellow;
+  height: 500px;
+  margin-top: 23%;
+  margin-bottom: 100px;
+  border: 5px solid gold;
+  background: black;
+  opacity: 0.9;
 }
 
 
@@ -24,8 +32,7 @@ body, input {
 }
 
 #welcome {
-  position: absolute;
-  top: 100px;
+  position: relative;
   width: 100%;
   text-align: center;
 }
@@ -43,7 +50,7 @@ body, input {
 }
 
 p {
-  border: 2px solid yellow;
+  border: 2px solid gold;
   height: 250px;
   position: absolute;
   top: 200px;
@@ -52,9 +59,9 @@ p {
 
 input {
   border: 0px;
-  width: 700px;
+  width: 500px;
   font-size: 40px;
-  border: 2px solid yellow;
+  border: 2px solid gold;
 }
 
 #story_box {
