@@ -59,7 +59,7 @@ p {
 
 input {
   border: 0px;
-  width: 300px;
+  width: 700px;
   font-size: 20px;
   border: 2px solid gold;
 }
@@ -72,5 +72,5 @@ input {
 #typing_box {
   position: absolute;
   left: 0px;
-  top: 500px;
+  top: 252px;
 }
