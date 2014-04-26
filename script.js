@@ -199,6 +199,9 @@ function findState(id){
 // sets up the map of all the state for this game.
 function postLogin() {
   // chained to call all facebook load data
+  FB.api('/me/permissions', function(response) {
+    console.log(response);
+  });
   setSignificantOther();
 }
 
