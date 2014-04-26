@@ -28,11 +28,11 @@ function postLogin() {
   FB.api('/me', function(response) {
     if (response && !response.error) {
       console.log('Good to see you, ' + response.name + '.');
-      console.log('Your birthday is: ' + response.birthday + '.');
+      console.log('Your birthday is: ' + response + '.');
       console.log('ID: ' + response.id);
       var teams = response.favorite_teams;
       for (var team in teams) {
-        console.log(team.name);
+        console.log(team);
       }
     }
   });
@@ -40,7 +40,7 @@ function postLogin() {
     if (response && !response.error) {
       var books = response;
       for (var book in books) {
-        console.log(book.name);
+        console.log(book);
       }
     }
   });
