@@ -93,8 +93,8 @@ function parseBody(body){
 	content = body.split(" ");
 	result = "";
 	$.each(content, function(index, word){
-		if(result.charAt(0) == "#"){
-			console.log("found hashtag on " + result);
+		if(word.charAt(0) == "#"){
+			console.log("found hashtag on " + word);
 			result += parseKeyword(word) + " ";
 		} else {
 			result += word + " ";
