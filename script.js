@@ -196,21 +196,10 @@ function findState(id){
 	return result
 }
 
-function loadingScreen() {
-  console.log("set up loading screen");
-}
-
 // sets up the map of all the state for this game.
 function postLogin() {
-  loadingScreen();
+  // chained to call all facebook load data
   setSignificantOther();
-  setMusic();
-  setBooks();
-  setFriend();
-  $("#welcome").addClass("hidden");
-  $("#game").removeClass("hidden");
-  console.debug(userInfo);
-  startGame();
 }
 
 function setSignificantOther() {
@@ -225,6 +214,10 @@ function setSignificantOther() {
     } else {
         userInfo['significant_other'] = "George Clooney Error";
     }
+
+    // on function return seek out next information element
+    setMusic();
+
   });
 }
 
@@ -260,6 +253,9 @@ function setMusic() {
       object['artist2'] = "Macklemore Error";
       userInfo['music'] = object;
     }
+
+    // next look for books
+    setBooks()
   });
 }
 
@@ -291,6 +287,9 @@ function setBooks() {
       object['book2'] = "Men are from Mars, Women are from Venus Error";
       userInfo['books'] = object;
     }
+
+    // chain all the network calls
+    setFriends();
   });
 }
 
@@ -322,8 +321,34 @@ function setFriend() {
       userInfo['enemy'] = "Stephen Hawking Error";
       userInfo['friend'] = "Carl Sagan Error";
     }
+
+    parseGameState();
+    loadGamePage();
   });
 }
+
+function parseGameState(){
+  gameStateString = JSON.stringify(gameState);
+  console.log(gameStateString);
+  gameStateString.replace("#friend", getFriendName());
+  gameStateString.replace("#friendBirthday", getFriendBirthday());
+  gameStateString.replace("#artist1", getTwoArtists()["artist1"]);
+  gameStateString.replace("#artist2", getTwoArtists()["artist2"]);
+  gameStateString.replace("#significantOther", getSignificantOther());
+  gameStateString.replace("#book1", getTwoBooks["book1"]);
+  gameStateString.replace("#book2", getTwoBooks["book2"]);
+  gameStateString.replace("#enemy", getEnemyName());
+  gameState = $.parseJSON(gameStateString);
+  console.log(gameState);
+}
+
+function loadGamePage(){
+  $("#welcome").addClass("hidden");
+  $("#game").removeClass("hidden");
+  console.debug(userInfo);
+  startGame();
+}
+
 
 // returns String name
 function getFriendName() {
