@@ -1,7 +1,7 @@
 [
   {
     "id": "start",
-    "body": "stuff",
+    "body": "You awake in a room. to your left is a door, to your right is a window on the floor in front of you there lay two objects, a pen and a dime",
     "actions" : {
     	"pick up" : {
     		"pen" : "pen state",
