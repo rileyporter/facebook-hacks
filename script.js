@@ -39,17 +39,20 @@ function postLogin() {
     }
   });
   FB.api('/me/books', function(response) {
-    console.log("got back a response");
     if (response && !response.error) {
-      console.log("response was good");
+      console.log("BOOKS: ");
+      console.debug(response);
       var books = response;
-      for (var book in books) {
-        console.log(book);
+      for (var i = 0; i < books.length; i++) {
+        console.debug(book);
+        console.log(books[i].name);
       }
     }
   });
   FB.abi('/me/friends', function(response) {
     if (response && !response.error) {
+      console.log("FRIENDS!: ");
+      console.debug(response);
       var friends = response;
       for (var i = 0; i < 5; i++) {
         console.log(friends[i].name);
