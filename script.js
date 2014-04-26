@@ -279,7 +279,7 @@ function setFriend() {
 function getBirthday(id) {
   FB.api('/' + id, function(response) {
     if (response && !response.error) {
-      console.debug(response.birthday);
+      console.log("BIRTHDAY" + response.birthday);
 
         return response.birthday;
     }
