@@ -40,9 +40,9 @@
           /*FB.login(function(response) {
             // handle the response
           }, {scope: 'email,user_likes,user_birthday,friends_birthday,user_relationships,user_relationship_details'});
-    */
-    FB.login();
-      } else {
+          */
+          FB.login();
+        } else {
           // In this case, the person is not logged into Facebook, so we call the login()
           // function to prompt them to do so. Note that at this stage there is no indication
           // of whether they are logged into the app. If they aren't then they'll see the Login
@@ -51,8 +51,9 @@
           /* FB.login(function(response) {
             // handle the response
           }, {scope: 'email,user_likes,user_birthday,friends_birthday,user_relationships,user_relationship_details'});
-        } */
-        FB.login();
+          } */
+          FB.login();
+        }
       });
       };
 
