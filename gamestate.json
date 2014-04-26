@@ -84,7 +84,7 @@
   "body": "As you crawl over the grate, the weak rusty metal gives way. You crash through vent and land face first on the ground, horribly crippling your already sad figure. As you regain your composure you realize that you are in an open hallway. There is a super sexy door in front of you. Its like, super sexy. Like, okay, seriously... picture a door, then picture a sexy door... the door that is in front of you is the sexy door (sexy-door). You see 3 other doors - one to your left (left-door), one to your right (right-door) and one directly behind (back-door). There is also probably a sexy bookcase or something that you could also check out.",
   "actions": {
     "go": {
-      "back" : "5"
+      "back" : "5",
       "to bookcase" : "28"
     },
     "open": {
