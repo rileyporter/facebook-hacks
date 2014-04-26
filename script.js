@@ -48,7 +48,7 @@ function takeAction(){
 		performDefaultAction(action, command);
 	} else {
     // consider each action
-    $.each(currentState, function(index, stateAction){
+    $.each(currentState['actions'], function(index, stateAction){
 
       console.log("considering action: " + response.substring(0, stateAction.length));
 
