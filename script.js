@@ -33,40 +33,52 @@ $(document).ready(function() {
 
 // linked in by event register in html page... to my everlasting shame
 function takeAction(){
-	console.log("taking action..");
 	var response = $('#response').val()
 	$('#response').val("")
-	console.log(response);
-	console.log(defaultActions)
-	console.log($.inArray(response, defaultActions))
 
 	var command = response.split(/\s+/);
 	var action = command[0]
-	var object = command[1]
+
+  console.log("***** taking action with command = " + response + " *****");
+  console.log(currentState);
 
 	// handle generic commands
 	if($.inArray(action, defaultActions) >= 0) {
-		performDefaultAction(action, object);
+		performDefaultAction(action, command);
 	} else {
+    var actionTaken = 0;
+    // consider each action
+    $.each(currentState['actions'], function(stateAction, objects){
 
-		// advance state
-		if(command.length == 2 &&
-			currentState['actions'][action] != undefined &&
-			currentState['actions'][action][object] != undefined){
-			// if the command parsed correctly
+      console.log("considering next action! (true val, followed by partial prompt)")
+      console.log(stateAction);
+      console.log(response.substring(0, stateAction.length));
 
-			var nextState = findState(currentState['actions'][action][object])
-			currentState = nextState;
-			renderState(nextState);
+      // if is a known action
+      if(response.substring(0, stateAction.length) == stateAction){
+        object = response.substring(stateAction.length + 1, response.length);
+        console.log("found action match = " + stateAction);
+        console.log("provided object = " + object);
+        console.log("available objects = ")
+        console.log(currentState['actions'][stateAction])
+        if(currentState['actions'][stateAction][object] != undefined){
+          actionTaken ++;
+          var nextState = findState(currentState['actions'][stateAction][object])
+          currentState = nextState;
+          renderState(nextState);
+          return;
+        }
+      }
+    });
 
-		} else {
-			reportInvalidAction();
-		}
+    if (actionTaken != 0){
+	     reportInvalidAction();
+    }
 	}
 
 }
 
-function performDefaultAction(action, object){
+function performDefaultAction(action, command){
 	var response = "";
 	switch(action){
 		case "help":
@@ -84,12 +96,21 @@ function performDefaultAction(action, object){
 			}
 			break;
 		case "grab":
-			// if object exists
+			// handle object of multiple words
+      var object = ""
+      $.each(command, function(index, obj){
+        if(index == 1){
+          object += obj;
+        } else if (index > 1){
+          object += " " + obj;
+        }
+      });
+
 			if(object != undefined && ($.inArray(object, currentState['objects']) >= 0)){
 				response = "You've picked up a " + object
 				possessions.push(object);
 			} else {
-				response = "You attempted to pick up " + object + ", it does not exist";
+				response = "You attempted to pick up " + object + ", it didn't work.";
 			}
 			break
 	}
@@ -123,16 +144,16 @@ function parseKeyword(keyword){
 			return getFriendBirthday();
 			break;
 		case "#firstArtist":
-			return getTwoArtists()["artist1"];
+			return getTwoArtists()[0];
 			break;
 		case "#secondArtist":
-			return getTwoArtists()["artist2"];
+			return getTwoArtists()[1];
 			break;
 		case "#firstBook":
-			return getTwoBooks["book1"];
+			return getTwoBooks[0];
 			break;
 		case "#secondBook":
-			return getTwoBooks()["book2"];
+			return getTwoBooks()[1];
 			break;
 		case "#significantOther":
 			return getSignificantOther();
@@ -178,7 +199,7 @@ function startGame() {
 // parsing in user specific data should happen.
 function renderState(state){
 	$("#prompt").html("What will you do?")
-	$("#story_box").html(state['body']);
+	$("#story_box").html(parseBody(state['body']));
 }
 
 
@@ -196,10 +217,21 @@ function findState(id){
 	return result
 }
 
+function loadingScreen() {
+  console.log("set up loading screen");
+}
+
 // sets up the map of all the state for this game.
 function postLogin() {
-  // chained to call all facebook load data
+  loadingScreen();
   setSignificantOther();
+  setMusic();
+  setBooks();
+  setFriend();
+  $("#welcome").addClass("hidden");
+  $("#game").removeClass("hidden");
+  console.debug(userInfo);
+  startGame();
 }
 
 function setSignificantOther() {
@@ -214,10 +246,6 @@ function setSignificantOther() {
     } else {
         userInfo['significant_other'] = "George Clooney Error";
     }
-
-    // on function return seek out next information element
-    setMusic();
-
   });
 }
 
@@ -253,9 +281,6 @@ function setMusic() {
       object['artist2'] = "Macklemore Error";
       userInfo['music'] = object;
     }
-
-    // next look for books
-    setBooks()
   });
 }
 
@@ -287,9 +312,6 @@ function setBooks() {
       object['book2'] = "Men are from Mars, Women are from Venus Error";
       userInfo['books'] = object;
     }
-
-    // chain all the network calls
-    setFriend();
   });
 }
 
@@ -323,34 +345,8 @@ function setFriend() {
       userInfo['enemy'] = "Stephen Hawking Error";
       userInfo['friend'] = "Carl Sagan Error";
     }
-
-    parseGameState();
-    loadGamePage();
   });
 }
-
-function parseGameState(){
-  gameStateString = JSON.stringify(gameState);
-  console.log(gameStateString);
-  gameStateString = gameStateString.split("#friend").join(getFriendName());
-  gameStateString = gameStateString.split("#birthday").join(getFriendBirthday());
-  gameStateString = gameStateString.split("#artist1").join(getTwoArtists()["artist1"]);
-  gameStateString = gameStateString.split("#artist2").join(getTwoArtists()["artist2"]);
-  gameStateString = gameStateString.split("#significant_other").join(getSignificantOther());
-  gameStateString = gameStateString.split("#book1").join(getTwoBooks["book1"]);
-  gameStateString = gameStateString.split("#book2").join(getTwoBooks["book2"]);
-  gameStateString = gameStateString.split("#enemy").join(getEnemyName());
-  gameState = $.parseJSON(gameStateString);
-  console.log(gameState);
-}
-
-function loadGamePage(){
-  $("#welcome").addClass("hidden");
-  $("#game").removeClass("hidden");
-  console.debug(userInfo);
-  startGame();
-}
-
 
 // returns String name
 function getFriendName() {

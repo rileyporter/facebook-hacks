@@ -57,7 +57,7 @@
 },
 {
   "id": "3",
-  "body": "You scale the table. People say that Mt. Everestt is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent",
+  "body": "You scale the table. People say that Mt. Everest is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent",
   "actions": {
     "enter": {
        "vent" : "5"
@@ -84,7 +84,7 @@
   "body": "As you crawl over the grate, the weak rusty metal gives way. You crash through vent and land face first on the ground, horribly crippling your already sad figure. As you regain your composure you realize that you are in an open hallway. There is a super sexy door in front of you. Its like, super sexy. Like, okay, seriously... picture a door, then picture a sexy door... the door that is in front of you is the sexy door (sexy-door). You see 3 other doors - one to your left (left-door), one to your right (right-door) and one directly behind (back-door). There is also probably a sexy bookcase or something that you could also check out.",
   "actions": {
     "go": {
-      "back" : "5"
+      "back" : "5",
       "to bookcase" : "28"
     },
     "open": {
@@ -104,7 +104,7 @@
         "back" : "7"
       },
       "move to" : {
-        "wind chime" : "11"
+        "wind-chime" : "11"
       }
     },
     "objects" : []
@@ -415,8 +415,8 @@
     "id" : "37",
     "body" : "Well that was pointless. It's a dreamworld stupid. You just punched a dream. You are really dumb, for real.",
     "action" : {
-      "walk" : {
-        "to pipe" : "36"
+      "approach" : {
+        "pipe" : "36"
       },
       "search" : {
         "room" : "38"
@@ -428,8 +428,8 @@
     "id" : "38",
     "body" : "It's still just a concrete room. It's ugly and cold, and there is that stupid dripping pipe in the corner that is getting water everywhere. Seriously, there is a lot of water coming from that pipe.",
     "action" : {
-      "walk" : {
-        "to pipe" : "36"
+      "approach" : {
+        "pipe" : "36"
       },
       "punch" : {
         "#enemy" : "37"
