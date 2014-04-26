@@ -297,15 +297,20 @@ function setFriend() {
   FB.api('me/friends?fields=birthday,name', function(response) {
     if (response && !response.error) {
       var data = response.data;
+      console.debug(data);
+      console.log("length of data: " + data.length);
       var x1 = Math.floor(Math.random()*data.length);
       while (data[x1].birthday === undefined || data[x1].birthday.length < 7) {
         console.log("choosing a new friend");
         x1 = Math.floor(Math.random()*data.length);
+        console.log("x: " + x1);
+        console.log("random num: " + Math.random()*data.length);
       }
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2) { // don't choose the same person
         console.log("choosing a new enemy");
         x2 = Math.floor(Math.random()*data.length);
+
       }
       if (data[x1] === undefined) {
         userInfo['friend'] = "Carl Sagan";
