@@ -273,6 +273,7 @@ function setFriend() {
       userInfo['enemy'] = data[x2];
     }
   });
+  console.log("NOOOOOO" + response.data);
 }
 
 // internal, please don't call.
