@@ -57,7 +57,7 @@
 },
 {
   "id": "3",
-  "body": "You scale the table. People say that Mt. Everestt is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent",
+  "body": "You scale the table. People say that Mt. Everest is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent",
   "actions": {
     "enter": {
        "vent" : "5"
@@ -104,7 +104,7 @@
         "back" : "7"
       },
       "move to" : {
-        "wind chime" : "11"
+        "wind-chime" : "11"
       }
     },
     "objects" : []

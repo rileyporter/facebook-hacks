@@ -144,16 +144,16 @@ function parseKeyword(keyword){
 			return getFriendBirthday();
 			break;
 		case "#firstArtist":
-			return getTwoArtists()["artist1"];
+			return getTwoArtists()[0];
 			break;
 		case "#secondArtist":
-			return getTwoArtists()["artist2"];
+			return getTwoArtists()[1];
 			break;
 		case "#firstBook":
-			return getTwoBooks["book1"];
+			return getTwoBooks[0];
 			break;
 		case "#secondBook":
-			return getTwoBooks()["book2"];
+			return getTwoBooks()[1];
 			break;
 		case "#significantOther":
 			return getSignificantOther();
@@ -199,7 +199,7 @@ function startGame() {
 // parsing in user specific data should happen.
 function renderState(state){
 	$("#prompt").html("What will you do?")
-	$("#story_box").html(state['body']);
+	$("#story_box").html(parseBody(state['body']));
 }
 
 
@@ -217,10 +217,21 @@ function findState(id){
 	return result
 }
 
+function loadingScreen() {
+  console.log("set up loading screen");
+}
+
 // sets up the map of all the state for this game.
 function postLogin() {
-  // chained to call all facebook load data
+  loadingScreen();
   setSignificantOther();
+  setMusic();
+  setBooks();
+  setFriend();
+  $("#welcome").addClass("hidden");
+  $("#game").removeClass("hidden");
+  console.debug(userInfo);
+  startGame();
 }
 
 function setSignificantOther() {
@@ -235,10 +246,6 @@ function setSignificantOther() {
     } else {
         userInfo['significant_other'] = "George Clooney Error";
     }
-
-    // on function return seek out next information element
-    setMusic();
-
   });
 }
 
@@ -274,9 +281,6 @@ function setMusic() {
       object['artist2'] = "Macklemore Error";
       userInfo['music'] = object;
     }
-
-    // next look for books
-    setBooks()
   });
 }
 
@@ -308,9 +312,6 @@ function setBooks() {
       object['book2'] = "Men are from Mars, Women are from Venus Error";
       userInfo['books'] = object;
     }
-
-    // chain all the network calls
-    setFriend();
   });
 }
 
@@ -320,14 +321,13 @@ function setFriend() {
       var data = response.data;
       var x1 = Math.floor(Math.random()*data.length);
       while (data[x1].birthday === undefined || data[x1].birthday.length < 7) {
-        console.log("choosing a new friend!");
+        console.log("choosing a new friend");
         x1 = Math.floor(Math.random()*data.length);
       }
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2) { // don't choose the same person
         console.log("choosing a new enemy");
         x2 = Math.floor(Math.random()*data.length);
-
       }
       if (data[x1] === undefined) {
         userInfo['friend'] = "Carl Sagan";
@@ -343,31 +343,7 @@ function setFriend() {
       userInfo['enemy'] = "Stephen Hawking Error";
       userInfo['friend'] = "Carl Sagan Error";
     }
-    parseGameState();
-    loadGamePage();
   });
-}
-
-function parseGameState(){
-  gameStateString = JSON.stringify(gameState);
-  console.log(gameStateString);
-  gameStateString = gameStateString.split("#friend").join(getFriendName());
-  gameStateString = gameStateString.split("#birthday").join(getFriendBirthday());
-  gameStateString = gameStateString.split("#artist1").join(getTwoArtists()["artist1"]);
-  gameStateString = gameStateString.split("#artist2").join(getTwoArtists()["artist2"]);
-  gameStateString = gameStateString.split("#significant_other").join(getSignificantOther());
-  gameStateString = gameStateString.split("#book1").join(getTwoBooks["book1"]);
-  gameStateString = gameStateString.split("#book2").join(getTwoBooks["book2"]);
-  gameStateString = gameStateString.split("#enemy").join(getEnemyName());
-  gameState = $.parseJSON(gameStateString);
-  console.log(gameState);
-}
-
-function loadGamePage(){
-  $("#welcome").addClass("hidden");
-  $("#game").removeClass("hidden");
-  console.debug(userInfo);
-  startGame();
 }
 
 // returns String name
