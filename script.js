@@ -9,6 +9,12 @@ $(document).ready(function() {
 	console.log("script file running...");
     loadGame();
     console.log("game state loaded?");
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          // the user is logged in and has authenticated
+          $("#enter").removeClass("hidden");
+        }
+     });
     $("#enter").click(function () {
     	//$("#game").removeClass("hidden");
     	//$("#welcome").addClass("hidden");

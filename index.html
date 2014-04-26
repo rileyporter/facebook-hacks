@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Acid Trip Dream</title>
+    <title>Acid Dream</title>
     <link href="style.css" type="text/css" rel="stylesheet" />
     <script src="jquery_min.js" ></script>
     <script src="script.js"></script>
@@ -76,35 +76,25 @@
 
     <div id="main_window">
       <div id="welcome">
-        <h1>Welcome to Acid Trip Dream</h1>
+        <h1>Welcome to Acid Dream</h1>
         <h2>Enter if you dare...</h2>
-        <fb:login-button show-faces="true" data-size="xlarge" onlogin="postLogin" id="login" max-rows="1"></fb:login-button>
-        <script>
-        FB.getLoginStatus(function(response) {
+        <div id="login">
+          <fb:login-button show-faces="true" data-size="xlarge" onlogin="postLogin" max-rows="1"></fb:login-button>
+        </div>
+        <!-- <script>
+          FB.getLoginStatus(function(response) {
               if (response.status === 'connected') {
-                // the user is logged in and has authenticated your
-                // app, and response.authResponse supplies
-                // the user's ID, a valid access token, a signed
-                // request, and the time the access token
-                // and signed request each expire
-                //var uid = response.authResponse.userID;
-                //var accessToken = response.authResponse.accessToken;
+                // the user is logged in and has authenticated
                 $("#enter").removeClass("hidden");
-              } else if (response.status === 'not_authorized') {
-                // the user is logged in to Facebook,
-                // but has not authenticated your app
-              } else {
-                // the user isn't logged in to Facebook.
               }
-             });
-        </script>
+           });
+        </script> !-->
         <button id="enter" class="hidden">Enter</button>
       </div>
 
-
       <div id="game" class="hidden">
         <div id="story_box">
-          <p>here I am!</p>
+          <p></p>
         </div>
 
         <div id="typing_box">
