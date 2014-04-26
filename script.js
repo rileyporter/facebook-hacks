@@ -96,7 +96,7 @@ function loadGame() {
 		gameState = data;
 		// here be hacks, the start of game should be called after user logs in
 		// for dev purposes it's being called immediately after game is loaded.
-		startGame();
+		//startGame();
 	});
 }
 
@@ -141,6 +141,7 @@ function postLogin() {
   console.debug(userInfo);
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
+  startGame();
 }
 
 function setSignificantOther() {
