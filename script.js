@@ -42,31 +42,39 @@ function takeAction(){
 
 	var command = response.split(/\s+/);
 	var action = command[0]
-	var object = command[1]
 
 	// handle generic commands
 	if($.inArray(action, defaultActions) >= 0) {
-		performDefaultAction(action, object);
+		performDefaultAction(action, command);
 	} else {
+    // consider each action
+    $.each(currentState, function(index, stateAction){
 
-		// advance state
-		if(command.length == 2 &&
-			currentState['actions'][action] != undefined &&
-			currentState['actions'][action][object] != undefined){
-			// if the command parsed correctly
+      console.log("considering action: " + response.substring(0, stateAction.length));
 
-			var nextState = findState(currentState['actions'][action][object])
-			currentState = nextState;
-			renderState(nextState);
+      // if is a known action
+      if(response.substring(0, stateAction.length) == stateAction){
+        object = response.substring(stateAction.length + 1, response.length);
+        console.log("found action match = " + stateAction);
+        console.log("provided object = " + object);
+        console.log("available objects = ")
+        console.log(currentState[stateAction])
+        if(currentState[stateAction][object] != undefined){
+          var nextState = findState(currentState['actions'][action][object])
+          currentState = nextState;
+          renderState(nextState);
+          return;
+        }
+      }
+    });
 
-		} else {
-			reportInvalidAction();
-		}
+
+	  reportInvalidAction();
 	}
 
 }
 
-function performDefaultAction(action, object){
+function performDefaultAction(action, command){
 	var response = "";
 	switch(action){
 		case "help":
@@ -84,12 +92,21 @@ function performDefaultAction(action, object){
 			}
 			break;
 		case "grab":
-			// if object exists
-			if(object != undefined && ($.inArray(object, currentState['objects']) >= 0)){
+			// handle object of multiple words
+      var object = ""
+      $.each(command, function(index, obj){
+        if(index == 1){
+          object += obj;
+        } else if (index > 1){
+          object += " " + obj;
+        }
+      });
+
+			if(object != undefined && ($.inArray(, currentState['objects']) >= 0)){
 				response = "You've picked up a " + object
 				possessions.push(object);
 			} else {
-				response = "You attempted to pick up " + object + ", it does not exist";
+				response = "You attempted to pick up " + object + ", it didn't work.";
 			}
 			break
 	}
