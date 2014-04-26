@@ -147,7 +147,7 @@ function setSignificantOther() {
   FB.api('/me?field=significant_other', function(response) {
     if (response && !response.error) {
       // set up significant other
-        userInfo.push({"significant_other" : response.significant_other});
+        userInfo['significant_other'] = response.significant_other;
     }
   });
 }
@@ -164,7 +164,10 @@ function setMusic() {
       while (data[x2].category !== "Musician/band") {
         x2 = Math.floor(Math.random()*data.length);
       }
-      userInfo.push({"music" : {"artist1" : data[x1].name, "artist2" : data[x2].name}});
+      var object = [];
+      object['artist1'] = data[x1].name;
+      object['artist2'] = data[x2].name;
+      userInfo['music'] = object;
     }
   });
 }
@@ -175,7 +178,10 @@ function setBooks() {
       var data = response.data;
       var x1 = Math.floor(Math.random()*data.length);
       var x2 = Math.floor(Math.random()*data.length);
-      userInfo.push({"books" : {"book1" : data[x1].name, "book2" : data[x2].name}});
+      var object = [];
+      object['book1'] = data[x1].name;
+      object['book2'] = data[x2].name;
+      userInfo['books'] = object;
     }
   });
 }
@@ -194,8 +200,8 @@ function setFriend() {
       while (data[x1].id === data[x2].id) { // don't choose the same person
         x2 = Math.floor(Math.random()*data.length);
       }
-      userInfo.push({"friend" : data[x1]});
-      userInfo.push({"enemy" : data[x2]});
+      userInfo['friend'] = data[x1];
+      userInfo['enemy'] = data[x2];
     }
   });
 }
