@@ -190,8 +190,13 @@ function findState(id){
 	return result
 }
 
+function loadingScreen() {
+  console.log("set up loading screen");
+}
+
 // sets up the map of all the state for this game.
 function postLogin() {
+  loadingScreen();
   setSignificantOther();
   setMusic();
   setBooks();
@@ -212,10 +217,11 @@ function setSignificantOther() {
         userInfo['significant_other'] = response.significant_other.name;
       }
     } else {
-        userInfo['significant_other'] = "George Clooney";
+        userInfo['significant_other'] = "Brad Pitt";
     }
   });
-  console.log("set significant other" + userInfo['significant_other']);
+  sleep(3000);
+  console.log("set significant other " + userInfo['significant_other']);
 }
 
 function setMusic() {
@@ -240,7 +246,7 @@ function setMusic() {
       userInfo['music'] = object;
     }
   });
-  console.log("set music" + getMusic());
+  console.log("set music " + getTwoArtists());
 }
 
 function setBooks() {
@@ -262,7 +268,7 @@ function setBooks() {
       userInfo['books'] = object;
     }
   });
-  console.log("set books " + getBooks());
+  console.log("set books " + getTwoBooks());
 }
 
 function setFriend() {
