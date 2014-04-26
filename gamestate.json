@@ -8,6 +8,38 @@
     },
     "climb": {
       "table" : "3"
+    },
+    "contemplate": {
+        "life" : "1a",
+        "love" : "1b"
+    }
+  },
+  "objects" : []
+  },
+
+{
+  "id": "1a",
+  "body": "That's way too deep right now man. Jeez, you just woke up in mysterious room... you need to learn about your priorities...",
+  "actions": {
+    "look": {
+        "up" : "2"
+    },
+    "climb": {
+      "table" : "3"
+    }
+  },
+  "objects" : []
+  },
+
+  {
+  "id": "1b",
+  "body": "</3 No one loves you </3",
+  "actions": {
+    "look": {
+        "up" : "2"
+    },
+    "climb": {
+      "table" : "3"
     }
   },
   "objects" : []
@@ -15,7 +47,7 @@
 
 {
   "id": "2",
-  "body": "#book1 You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One you. The vent fits exactly one unit-'you'",
+  "body": "#book1 You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One 'you'. The vent fits exactly one unit-'you'",
   "actions": {
     "climb": {
       "table" : "3"
@@ -116,7 +148,7 @@
   },
   {
   	"id" : "16",
-  	"body" : "As you walk in the room, the light from the hallway illuminates a small portion of the completely pitch black room. You see a room swarming with cockroaches that scatter from the light; they cover every surface. The door slams behind you, leaving you in darkness.",
+  	"body" : "As you walk in the room, the light from the hallway illuminates a small portion of the completely pitch black room. You see a room swarming with cockroaches that scatter from the light; they cover every surface. The door slams behind you, leaving you in darkness. This is getting waayyy too real, man.",
   	"actions" : {
       "go" : {
         "back" : "7"
@@ -207,7 +239,7 @@
   },
   {
     "id" : "23",
-    "body" : "You enter the room and see your friend, #friend, standing in the middle of it. They don't acknowledge you at all, which you think is kind of a d*ck move since you're the only two in here.",
+    "body" : "You enter the room and see your friend, #friend , standing in the middle of it. They don't acknowledge you at all, which you think is kind of a d*ck move since you're the only two in here. That is such a #friend thing to do.",
     "actions" : {
       "talk" : {
         "to #friend" : "24"
@@ -234,7 +266,7 @@
   },
   {
     "id" : "25",
-    "body" : "#friend clasps your hand and whispers, 'you remembered'. They then reach into their pocket and give you a key. Yay! Another key!",
+    "body" : "#friend clasps your hand and whispers, 'you remembered'. They then reach their clamy hand into their pocket and give you a key. Yay! Another key!",
     "actions" : {
       "go" : {
         "back" : "7"
@@ -246,7 +278,7 @@
   },
   {
     "id" : "26",
-    "body" : "still doing the soul-staring thing, #friend whispers, 'incorrect'",
+    "body" : "still doing the soul-staring thing, #friend whispers, 'incorrect'.",
     "actions" : {
       "birthday is" : {
         "#birthday" : "25",
@@ -366,7 +398,7 @@
   },
   {
     "id" : "36",
-    "body" : "You're standing in front of the pipe now. It seems to be leaking quite a bit from the base. It even looks a little loose...maybe a bit of force...",
+    "body" : "You're standing in front of the pipe now. It seems to be leaking quite a bit from the base. It even looks a little loose...maybe a bit of force... luckily your Judo skillz taught you how to kick thangz.",
     "action" : {
       "kick" : {
         "pipe" : "39"
@@ -382,7 +414,7 @@
   },
   {
     "id" : "37",
-    "body" : "Well that was pointless. It's a dreamworld stupid.",
+    "body" : "Well that was pointless. It's a dreamworld stupid. You just punched a dream. You are really dumb, for real.",
     "action" : {
       "walk" : {
         "to pipe" : "36"
@@ -408,8 +440,32 @@
   },
   {
     "id" : "39",
-    "body" : "You've kicked the pipe in half! Now water is pouring out of the hole and filling the room. #enemy: 'No! No! What are you doing! Nooooo!' As soon as your face is under water, you suddently wake up. Safe and sound in your bed.",
+    "body" : "You've kicked the pipe in half! Now water is pouring out of the hole and filling the room. #enemy: 'No! No! What are you doing! Nooooo!' As soon as your face is under water, you suddently wake up. Safe and sound in your bed. The End!(?)",
+    "action" : {
+        "drop" : {
+          "acid" : "40"
+        }
+      },
+    "objects" : []
+  },
+  {
+    "id" : "40",
+    "body" : "After ALL of this, you are still slanging rock and drinkin 40's like it waddent nuddin? Are you sure you haven't learned your lesson. Do you really want to keep doing drugs?",
+    "action" : {
+        "yes" : {
+          "please" : "1"
+        },
+        "no" : {
+          "thanks" : "41"
+        }
+      },
+    "objects" : []
+  },
+  {
+    "id" : "41",
+    "body" : "Nobody likes a quitter. You lose.",
     "action" : {},
     "objects" : []
   }
+
 ]
