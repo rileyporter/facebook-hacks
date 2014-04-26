@@ -398,7 +398,7 @@
   {
     "id" : "36",
     "body" : "You're standing in front of the pipe now. It seems to be leaking quite a bit from the base. It even looks a little loose...maybe a bit of force... luckily your Judo skillz taught you how to kick thangz.",
-    "action" : {
+    "actions" : {
       "kick" : {
         "pipe" : "39"
       },
