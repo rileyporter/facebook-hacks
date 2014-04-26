@@ -30,7 +30,18 @@ function postLogin() {
       console.log('Good to see you, ' + response.name + '.');
       console.log('Your birthday is: ' + response.birthday + '.');
       console.log('ID: ' + response.id);
-      console.log('TEAMS: ' + response.favorite_teams);
+      var teams = response.favorite_teams;
+      for (var team in teams) {
+        console.log(team.name);
+      }
+    }
+  });
+  FB.api('/me/books', function(response) {
+    if (response && !response.error) {
+      var books = response;
+      for (var book in books) {
+        console.log(book.name);
+      }
     }
   });
   $("#welcome").addClass("hidden");
