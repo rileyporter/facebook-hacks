@@ -72,7 +72,7 @@
       },
       "move to" : {
         "wind chime" : "11"
-      },
+      }
     },
     "objects" : []
   },
@@ -145,7 +145,7 @@
       }
     },
     "objects" : []
-  }
+  },
   {
     "id" : "18",
     "body" : "You shine your flashlight around the room, and everywhere the light touches, the cockroaches scatter. You see a piece of key hanging on a hook on the far wall.",
@@ -224,7 +224,7 @@
     "actions" : {
       "birthday is" : {
         "#birthday" : "25",
-                    : "26"
+        "birthday2" : "26"
       },
       "go" : {
         "back" : "7"
@@ -250,7 +250,7 @@
     "actions" : {
       "birthday is" : {
         "#birthday" : "25",
-                    : "26"
+        "birthday2" : "26"
       },
       "go" : {
         "back" : "7"
@@ -408,8 +408,8 @@
   },
   {
     "id" : "39",
-    "body" : "You've kicked the pipe in half! Now water is pouring out of the hole and filling the room. #enemy: 'No! No! What are you doing! Nooooo!' As soon as your face is under water, you suddently wake up. Safe and sound in your bed."
-    "action" {},
+    "body" : "You've kicked the pipe in half! Now water is pouring out of the hole and filling the room. #enemy: 'No! No! What are you doing! Nooooo!' As soon as your face is under water, you suddently wake up. Safe and sound in your bed.",
+    "action" : {},
     "objects" : []
   }
 ]
