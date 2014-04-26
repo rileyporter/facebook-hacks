@@ -332,10 +332,10 @@ function parseGameState(){
   console.log(gameStateString);
   gameStateString.replace("#friend", getFriendName());
   gameStateString.replace("#friendBirthday", getFriendBirthday());
-  gameStateString.replace("#artist1", getTwoArtists()["artist1"]);
+  gameStateString.split("#artist1").join(getTwoArtists()["artist1"]);
   gameStateString.replace("#artist2", getTwoArtists()["artist2"]);
   gameStateString.replace("#significantOther", getSignificantOther());
-  gameStateString.replace("#book1", getTwoBooks["book1"]);
+  gameStateString.split("#book1").join(getTwoBooks["book1"]);
   gameStateString.replace("#book2", getTwoBooks["book2"]);
   gameStateString.replace("#enemy", getEnemyName());
   gameState = $.parseJSON(gameStateString);
