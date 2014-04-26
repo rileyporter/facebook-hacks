@@ -47,7 +47,7 @@
 
 {
   "id": "2",
-  "body": "#book1 You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One 'you'. The vent fits exactly one unit-'you'",
+  "body": "You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One 'you'. The vent fits exactly one unit-'you'",
   "actions": {
     "climb": {
       "table" : "3"
@@ -398,7 +398,7 @@
   {
     "id" : "36",
     "body" : "You're standing in front of the pipe now. It seems to be leaking quite a bit from the base. It even looks a little loose...maybe a bit of force... luckily your Judo skillz taught you how to kick thangz.",
-    "action" : {
+    "actions" : {
       "kick" : {
         "pipe" : "39"
       },
@@ -414,7 +414,7 @@
   {
     "id" : "37",
     "body" : "Well that was pointless. It's a dreamworld stupid. You just punched a dream. You are really dumb, for real.",
-    "action" : {
+    "actions" : {
       "approach" : {
         "pipe" : "36"
       },
@@ -427,7 +427,7 @@
   {
     "id" : "38",
     "body" : "It's still just a concrete room. It's ugly and cold, and there is that stupid dripping pipe in the corner that is getting water everywhere. Seriously, there is a lot of water coming from that pipe.",
-    "action" : {
+    "actions" : {
       "approach" : {
         "pipe" : "36"
       },
@@ -440,7 +440,7 @@
   {
     "id" : "39",
     "body" : "You've kicked the pipe in half! Now water is pouring out of the hole and filling the room. #enemy: 'No! No! What are you doing! Nooooo!' As soon as your face is under water, you suddently wake up. Safe and sound in your bed. The End!(?)",
-    "action" : {
+    "actions" : {
         "drop" : {
           "acid" : "40"
         }
@@ -450,7 +450,7 @@
   {
     "id" : "40",
     "body" : "After ALL of this, you are still slanging rock and drinkin 40's like it waddent nuddin? Are you sure you haven't learned your lesson. Do you really want to keep doing drugs?",
-    "action" : {
+    "actions" : {
         "yes" : {
           "please" : "1"
         },
@@ -463,7 +463,7 @@
   {
     "id" : "41",
     "body" : "Nobody likes a quitter. You lose.",
-    "action" : {},
+    "actions" : {},
     "objects" : []
   }
 

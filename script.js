@@ -71,7 +71,7 @@ function takeAction(){
       }
     });
 
-    if (actionTaken != 0){
+    if (actionTaken == 0){
 	     reportInvalidAction();
     }
 	}
