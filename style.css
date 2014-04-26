@@ -3,7 +3,7 @@ body {
   background-image:url('acid_dream.jpg');
   background-size: 100%;
   background-repeat:no-repeat;
-  color: #66FF33;
+  color: #66FF33; //green
   font-family: "Courier New", "Andale mono", monospace;
   font-size: 1em;
 }
@@ -19,7 +19,7 @@ body {
   height: 300px;
   margin-top: 23%;
   margin-bottom: 100px;
-  border: 5px solid gold;
+  border: 5px solid #FFA319; //gold
   background: black;
   opacity: 0.9;
 }
@@ -44,10 +44,11 @@ body {
 
 #welcome h2 {
   font-size: 2em;
+  color: #A31919; //red
 }
 
 p {
-  border: 2px solid gold;
+  border: 2px solid #FFA319; //gold
   height: 250px;
   position: absolute;
   top: 200px;
@@ -58,7 +59,7 @@ input {
   border: 0px;
   width: 700px;
   font-size: 20px;
-  border: 2px solid gold;
+  border: 2px solid #FFA319; //gold
 }
 
 #story_box {
