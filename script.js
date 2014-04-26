@@ -10,10 +10,11 @@ $(document).ready(function() {
     loadGame();
     console.log("game state loaded?");
     $("#enter").click(function () {
-    	$("#game").removeClass("hidden");
-    	$("#welcome").addClass("hidden");
-    	startGame();
-    	console.log("started game");
+    	//$("#game").removeClass("hidden");
+    	//$("#welcome").addClass("hidden");
+    	//startGame();
+    	//console.log("started game");
+    	postLogin();
     });
 
 
