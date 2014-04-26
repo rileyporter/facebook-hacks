@@ -24,7 +24,7 @@ body {
   opacity: 0.9;
 }
 
-#login div * {
+#login * {
   text-align: center;
 }
 
@@ -38,12 +38,8 @@ body {
   text-align: center;
 }
 
-#login {
-  width: 100%;
-}
-
 #welcome h1 {
-  font-size: 4em;
+  font-size: 3em;
 }
 
 #welcome h2 {
