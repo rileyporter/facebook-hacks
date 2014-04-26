@@ -16,7 +16,7 @@ body {
   position: relative;
   width: 700px;
   margin: auto;
-  height: 600px; // changed to 300?
+  height: 300px;
   margin-top: 23%;
   margin-bottom: 100px;
   border: 5px solid gold;
@@ -24,10 +24,8 @@ body {
   opacity: 0.9;
 }
 
-#login {
+#login div * {
   text-align: center;
-  margin-top: 100px;
-  width: 100%;
 }
 
 #state_picture {
