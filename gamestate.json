@@ -1,0 +1,26 @@
+[
+  {
+    "id": "start",
+    "body": "stuff",
+    "actions" : {
+    	"pick up" : {
+    		"pen" : "pen state",
+    		"dime" : "dime state"
+    	},
+    	"open" : {
+    		"door" : "hallway",
+    		"window" : "outside"
+    	}
+    }
+  },
+  {
+  	"id" : "hallway",
+  	"body": "you're in a hallway",
+  	"actions" : {}
+  },
+  {
+  	"id" : "outside",
+  	"body" : "its sunny :)",
+	"actions": {}
+  }
+]
