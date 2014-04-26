@@ -8,15 +8,15 @@ function postLogin() {
   FB.api('/me', function(response) {
     console.log('Good to see you, ' + response.name + '.');
   });
-  document.getElementById("welcome").addClassName("hidden");
-  document.getElementById("game").removeClassName("hidden");
+  $("welcome").addClassName(".hidden");
+  $("game").removeClassName(".hidden");
 }
 
 // process response from text box
 function processResponse() {
-  var target = document.getElementById("response");
+  var target = $("#response");
   console.log(target.value);
-  var story = document.getElementById("story_box").lastChild;
+  var story = $("#story_box").lastChild;
   story.innerHTML = target.value;
   target.value = "";
 }
