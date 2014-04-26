@@ -3,15 +3,16 @@
     "id": "start",
     "body": "You awake in a room. to your left is a door, to your right is a window on the floor in front of you there lay two objects, a pen and a dime",
     "actions" : {
-    	"pick up" : {
-    		"pen" : "pen state",
-    		"dime" : "dime state"
-    	},
     	"open" : {
     		"door" : "hallway",
     		"window" : "outside"
     	}
-    }
+    },
+    "objects" : [
+    	"pen",
+    	"dime"
+    	]
+
   },
   {
   	"id" : "hallway",

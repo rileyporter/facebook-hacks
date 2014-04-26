@@ -1,6 +1,9 @@
 var gameState
 var currentState
 
+var possessions = []
+var defaultActions = ["help", "possessions", "grab"]
+
 $(document).ready(function() {
 	console.log("script file running...");
     loadGame();
@@ -15,35 +18,72 @@ $(document).ready(function() {
 // linked in by event register in html page... to my everlasting shame
 function takeAction(){
 	console.log("taking action..");
+	var response = $('#response').val()
+	$('#response').val("")
+	console.log(response);
+	console.log(defaultActions)
+	console.log($.inArray(response, defaultActions))
 
-	// handle generic commands
-
-	var command = $('#response').val().split(/\s+/);;
+	var command = response.split(/\s+/);
 	var action = command[0]
 	var object = command[1]
-	
-	// advance state
-	console.log($('#response').val())
-	console.log(action + object)
 
-
-	console.log(currentState['actions'])
-	console.log(currentState['actions'][action])
-	console.log(currentState['actions'][action][object])
-	if(currentState['actions'][action] != undefined &&
-		currentState['actions'][action][object] != undefined){
-		var nextState = findState(currentState['actions'][action][object])
-		currentState = nextState;
-		renderState(nextState);
+	// handle generic commands
+	if($.inArray(action, defaultActions) >= 0) {
+		performDefaultAction(action, object);
 	} else {
-		reportInvalidAction();
+
+		// advance state
+		if(command.length == 2 &&
+			currentState['actions'][action] != undefined &&
+			currentState['actions'][action][object] != undefined){
+			// if the command parsed correctly
+			
+			var nextState = findState(currentState['actions'][action][object])
+			currentState = nextState;
+			renderState(nextState);
+		
+		} else {
+			reportInvalidAction();
+		}
 	}
 	
 }
 
+function performDefaultAction(action, object){
+	var response = "";
+	switch(action){
+		case "help":
+			response = "Your available actions are: "
+			$.each(defaultActions, function(i, action){response +=  " " + action});
+			$.each(currentState['actions'], function(key, val) {response += " " +key});
+			break;
+		case "possessions":
+			console.log("reporting possessions")
+			if(possessions.length == 0){
+				response = "You have no possessions, loser"
+			} else {
+				response = "Your possessions are: "
+				$.each(possessions, function(i, pos){response += " " + pos});
+			}
+			break;
+		case "grab":
+			// if object exists
+			if(object != undefined && ($.inArray(object, currentState['objects']) >= 0)){
+				response = "You've picked up a " + object
+				possessions.push(object);
+			} else {
+				response = "You attempted to pick up " + object + ", it does not exist";
+			}
+			break
+	}
+	$("#prompt").html(response);
+}
+
+
 // doesn't do anything. called whenever an action lookup fails
 function reportInvalidAction(){
-	console.log("that didn't work");
+	$("#prompt").html("That didn't work. What will you do?")
 }
 
 // loads the game from our flat .json file. This method should almost certainly
