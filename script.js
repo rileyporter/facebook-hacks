@@ -1,5 +1,6 @@
 var gameState
 var currentState
+var userInfo
 
 var possessions = []
 var defaultActions = ["help", "possessions", "grab"]
@@ -38,16 +39,16 @@ function takeAction(){
 			currentState['actions'][action] != undefined &&
 			currentState['actions'][action][object] != undefined){
 			// if the command parsed correctly
-			
+
 			var nextState = findState(currentState['actions'][action][object])
 			currentState = nextState;
 			renderState(nextState);
-		
+
 		} else {
 			reportInvalidAction();
 		}
 	}
-	
+
 }
 
 function performDefaultAction(action, object){
@@ -94,7 +95,6 @@ function loadGame() {
 		gameState = data;
 		// here be hacks, the start of game should be called after user logs in
 		// for dev purposes it's being called immediately after game is loaded.
-		$("#welcome").hide();// more hacks
 		startGame();
 	});
 }
@@ -122,61 +122,120 @@ function renderState(state){
 // the argument. (we should probably avoid duplicating ids, since that'll be
 // convusing)
 function findState(id){
-
 	var result;
 	$.each(gameState, function(index) {
 		if (gameState[index]['id'] == id){
 			result = gameState[index];
-		} 
+		}
 	});
 	return result
 }
 
-// idk yo
+// sets up the map of all the state for this game.
 function postLogin() {
-  console.log("auth: ");
-  console.debug(FB.getAuthResponse());
-  FB.api('/me', { access_token: FB.getAuthResponse().accessToken }, function(response) {
-    if (response && !response.error) {
-      console.log('Good to see you, ' + response.name + '.');
-      console.debug(response);
-      console.log('ID: ' + response.id);
-      var teams = response.favorite_teams;
-      for (var i = 0; i < teams.length; i++) {
-        console.log(teams[i].name);
-      }
-    }
-  });
-  FB.api('/me/books', function(response) {
-    if (response && !response.error) {
-      console.log("BOOKS: ");
-      console.debug(response);
-      var books = response.data;
-      for (var i = 0; i < books.length; i++) {
-        console.log(books[i].name);
-      }
-    }
-  });
-  FB.abi('/me/friends', { access_token: FB.getAuthResponse().accessToken }, function(response) {
-    if (response && !response.error) {
-      console.log("FRIENDS!: ");
-      console.debug(response);
-      var friends = response;
-      for (var i = 0; i < 5; i++) {
-        console.log(friends[i].name);
-      }
-    }
-  });
+  setSignificantOther();
+  setMusic();
+  setBooks();
+  setFriend();
+  console.debug(userInfo);
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
 }
 
-/*** outdated by 'takeAction' ***/
-// process response from text box
-/*function processResponse() {
-  var target = $("#response");
-  console.log(target.value);
-  var story = $("#story_box").lastChild;
-  story.innerHTML = target.value;
-  target.value = "";
-}*/
+function setSignificantOther() {
+  FB.api('/me?field=significant_other', function(response) {
+    if (response && !response.error) {
+      // set up significant other
+        userInfo.push({"significant_other" : response.significant_other});
+      }
+    }
+  });
+}
+
+function setMusic() {
+  FB.api('/me/music', function(response) {
+    if (response && !response.error) {
+      var data = response.data;
+      var x1 = Math.floor((Math.random()*data.length)+1);
+      while (data[x1].category !== "Musician/band") {
+        x1 = Math.floor((Math.random()*data.length)+1);
+      }
+      var x2 = Math.floor((Math.random()*data.length)+1);
+      while (data[x2].category !== "Musician/band") {
+        x2 = Math.floor((Math.random()*data.length)+1);
+      }
+      userInfo.push({"music" : {"artist1" : data[x1].name, "artist2" : data[x2].name}});
+    }
+  });
+}
+
+function setBooks() {
+  FB.api('/me/books', function(response) {
+    if (response && !response.error) {
+      var data = response.data;
+      var x1 = Math.floor((Math.random()*data.length)+1);
+      var x2 = Math.floor((Math.random()*data.length)+1);
+      userInfo.push({"books" : {"book1" : data[x1].name, "book2" : data[x2].name}});
+    }
+  });
+}
+
+function setFriend() {
+  FB.api('/me/friends', function(response) {
+    if (response && !response.error) {
+      var data = response.data;
+      var x1 = Math.floor((Math.random()*data.length)+1);
+      var birthday = getBirthday(data[x1].id);
+      while (birthday !== undefined && birthday.length < 7) { // get a friend with a birthday
+        x1 = Math.floor((Math.random()*data.length)+1);
+        birthday = getBirthday(data[x1].id);
+      }
+      var x2 = Math.floor((Math.random()*data.length)+1);
+      while (data[x1].id === data[x2].id) { // don't choose the same person
+        x2 = Math.floor((Math.random()*data.length)+1);
+      }
+      userInfo.push({"friend" : data[x1]});
+      userInfo.push({"enemy" : data[x2]});
+    }
+  });
+}
+
+// internal, please don't call.
+function getBirthday(var id) {
+  FB.api('/id', function(response) {
+    if (response && !response.error) {
+        return response.birthday;
+      }
+    }
+  });
+}
+
+// returns String name
+function getFriendName() {
+  return userInfo['friend'].name;
+}
+
+// returns String MM/YY/DD
+function getFriendBirthday() {
+  return getBirthday(userInfo['friend'].id);
+}
+
+// returns map: ["artist1": name, "artist2": name]
+function getTwoArtists() {
+  return userInfo['music'];
+}
+
+// returns map: ["book1": name, "book2": name]
+function getTwoBooks() {
+  return userInfo['books'];
+}
+
+// returns String name
+function getSignificantOther() {
+  return userInfo['significant_other'];
+}
+
+// returns String name
+function getEnemyName() {
+  return userInfo['enemy'].name;
+}
