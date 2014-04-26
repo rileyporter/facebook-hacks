@@ -149,7 +149,6 @@ function setSignificantOther() {
       // set up significant other
         userInfo.push({"significant_other" : response.significant_other});
       }
-    }
   });
 }
 
