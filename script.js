@@ -60,8 +60,8 @@ function takeAction(){
         console.log("provided object = " + object);
         console.log("available objects = ")
         console.log(currentState[stateAction])
-        if(currentState[stateAction][object] != undefined){
-          var nextState = findState(currentState['actions'][action][object])
+        if(currentState['actions'][stateAction][object] != undefined){
+          var nextState = findState(currentState['actions'][stateAction][object])
           currentState = nextState;
           renderState(nextState);
           return;
