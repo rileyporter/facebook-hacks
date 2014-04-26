@@ -27,7 +27,7 @@ function loadGame() {
 function postLogin() {
   console.log("auth: ");
   console.debug(FB.getAuthResponse());
-  FB.api('/me', function(response) {
+  FB.api('/me', { access_token: FB.getAuthResponse().accessToken }, function(response) {
     if (response && !response.error) {
       console.log('Good to see you, ' + response.name + '.');
       console.debug(response);
@@ -48,7 +48,7 @@ function postLogin() {
       }
     }
   });
-  FB.abi('/me/friends', function(response) {
+  FB.abi('/me/friends', { access_token: FB.getAuthResponse().accessToken }, function(response) {
     if (response && !response.error) {
       console.log("FRIENDS!: ");
       console.debug(response);
