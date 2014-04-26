@@ -9,10 +9,11 @@ $(document).ready(function() {
 	console.log("script file running...");
     loadGame();
     console.log("game state loaded?");
-    $("enter").click(function () {
-    	$("game").removeClass("hidden");
-    	$("welcome").addClass("hidden");
+    $("#enter").click(function () {
+    	$("#game").removeClass("hidden");
+    	$("#welcome").addClass("hidden");
     	startGame();
+    	console.log("started game");
     });
 
 
