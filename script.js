@@ -156,13 +156,13 @@ function setMusic() {
   FB.api('/me/music', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      var x1 = Math.floor((Math.random()*data.length)+1);
+      var x1 = Math.floor(Math.random()*data.length);
       while (data[x1].category !== "Musician/band") {
-        x1 = Math.floor((Math.random()*data.length)+1);
+        x1 = Math.floor(Math.random()*data.length);
       }
-      var x2 = Math.floor((Math.random()*data.length)+1);
+      var x2 = Math.floor(Math.random()*data.length);
       while (data[x2].category !== "Musician/band") {
-        x2 = Math.floor((Math.random()*data.length)+1);
+        x2 = Math.floor(Math.random()*data.length);
       }
       userInfo.push({"music" : {"artist1" : data[x1].name, "artist2" : data[x2].name}});
     }
@@ -173,8 +173,8 @@ function setBooks() {
   FB.api('/me/books', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      var x1 = Math.floor((Math.random()*data.length)+1);
-      var x2 = Math.floor((Math.random()*data.length)+1);
+      var x1 = Math.floor(Math.random()*data.length);
+      var x2 = Math.floor(Math.random()*data.length);
       userInfo.push({"books" : {"book1" : data[x1].name, "book2" : data[x2].name}});
     }
   });
@@ -184,15 +184,15 @@ function setFriend() {
   FB.api('/me/friends', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      var x1 = Math.floor((Math.random()*data.length)+1);
+      var x1 = Math.floor(Math.random()*data.length);
       var birthday = getBirthday(data[x1].id);
       while (birthday !== undefined && birthday.length < 7) { // get a friend with a birthday
-        x1 = Math.floor((Math.random()*data.length)+1);
+        x1 = Math.floor(Math.random()*data.length);
         birthday = getBirthday(data[x1].id);
       }
-      var x2 = Math.floor((Math.random()*data.length)+1);
+      var x2 = Math.floor(Math.random()*data.length);
       while (data[x1].id === data[x2].id) { // don't choose the same person
-        x2 = Math.floor((Math.random()*data.length)+1);
+        x2 = Math.floor(Math.random()*data.length);
       }
       userInfo.push({"friend" : data[x1]});
       userInfo.push({"enemy" : data[x2]});
