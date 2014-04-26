@@ -63,11 +63,14 @@ input {
   width: 700px;
   font-size: 20px;
   border: 2px solid #FFA319; /* gold */
+  background-color: black;
+  opacity: 0.9;
 }
 
 #story_box {
   margin: 5px 0px 10px 0px;
   text-align: center;
+  text-size: 1.5em;
 }
 
 #typing_box {
