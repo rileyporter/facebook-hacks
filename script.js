@@ -206,12 +206,16 @@ function setSignificantOther() {
   FB.api('/me?field=significant_other', function(response) {
     if (response && !response.error) {
       // set up significant other
+      if (response.significant_other === undefined) {
+        userInfo['significant_other'] = "George Clooney";
+      } else {
         userInfo['significant_other'] = response.significant_other.name;
-        console.debug(response.significan_other);
+      }
     } else {
         userInfo['significant_other'] = "George Clooney";
     }
   });
+  console.log("set significant other" + userInfo['significant_other']);
 }
 
 function setMusic() {
@@ -236,6 +240,7 @@ function setMusic() {
       userInfo['music'] = object;
     }
   });
+  console.log("set music" + getMusic());
 }
 
 function setBooks() {
@@ -257,6 +262,7 @@ function setBooks() {
       userInfo['books'] = object;
     }
   });
+  console.log("set books " + getBooks());
 }
 
 function setFriend() {
@@ -267,7 +273,7 @@ function setFriend() {
       console.log("FRIEND" + response.data);
       var x1 = Math.floor(Math.random()*data.length);
       var birthday = getBirthday(data[x1].id);
-      while (birthday === 'undefined' || birthday.length < 7) { // get a friend with a birthday
+      while (birthday === undefined || birthday.length < 7) { // get a friend with a birthday
         x1 = Math.floor(Math.random()*data.length);
         birthday = getBirthday(data[x1].id);
       }
@@ -279,7 +285,7 @@ function setFriend() {
       userInfo['enemy'] = data[x2];
     }
   });
-  console.log("NOOOOOO" + response.data);
+  console.log("set friend and enemy " + getFriendName() + " " + getEnemyName());
 }
 
 // internal, please don't call.
