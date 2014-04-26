@@ -15,7 +15,7 @@
 
 {
   "id": "2",
-  "body": "#significantOther : #enemy : #firstBook You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One you. The vent fits exactly one unit-'you'",
+  "body": "You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One you. The vent fits exactly one unit-'you'",
   "actions": {
     "climb": {
       "table" : "3"
@@ -25,7 +25,7 @@
 },
 {
   "id": "3",
-  "body": "You scale the table. People say that Mt. Everestt is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent",
+  "body": "#significantOther : #enemy : #firstBook You scale the table. People say that Mt. Everestt is a life-changing challenge, and that summiting K2 is an incredible physical task... but they have clearly never tried to climb this table. You. are. a. god. You can now reach the vent",
   "actions": {
       "enter": {
         "vent" : "5"
