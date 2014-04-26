@@ -25,8 +25,8 @@ function loadGame() {
 }
 
 function postLogin() {
-  console.log("login: " + FB.getLoginStatus());
-  console.log("auth: " + FB.getAuthResponse());
+  console.log("auth: ");
+  console.debug(FB.getAuthResponse());
   FB.api('/me', function(response) {
     if (response && !response.error) {
       console.log('Good to see you, ' + response.name + '.');
@@ -42,9 +42,8 @@ function postLogin() {
     if (response && !response.error) {
       console.log("BOOKS: ");
       console.debug(response);
-      var books = response;
+      var books = response.data;
       for (var i = 0; i < books.length; i++) {
-        console.debug(book);
         console.log(books[i].name);
       }
     }
