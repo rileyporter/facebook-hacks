@@ -178,7 +178,7 @@ function startGame() {
 // parsing in user specific data should happen.
 function renderState(state){
 	$("#prompt").html("What will you do?")
-	$("#story_box").html(parseBody(state['body']));
+	$("#story_box").html(state['body']);
 }
 
 
