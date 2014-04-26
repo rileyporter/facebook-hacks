@@ -14,6 +14,7 @@ $(document).ready(function() {
     	//$("#welcome").addClass("hidden");
     	//startGame();
     	//console.log("started game");
+      $("#enter").addClass("hidden");
     	postLogin();
     });
 
@@ -207,6 +208,8 @@ function setSignificantOther() {
       // set up significant other
         userInfo['significant_other'] = response.significant_other.name;
         console.debug(response.significan_other);
+    } else {
+        userInfo['significant_other'] = "George Clooney";
     }
   });
 }
@@ -222,7 +225,7 @@ function setMusic() {
         x1 = Math.floor(Math.random()*data.length);
       }
       var x2 = Math.floor(Math.random()*data.length);
-      while (data[x2].category !== "Musician/band") {
+      while (x1 === x2 || data[x2].category !== "Musician/band") {
         x2 = Math.floor(Math.random()*data.length);
       }
       var object = [];
@@ -243,6 +246,9 @@ function setBooks() {
 
       var x1 = Math.floor(Math.random()*data.length);
       var x2 = Math.floor(Math.random()*data.length);
+      while (x1 === x2) {
+        x2 = Math.floor(Math.random()*data.length);
+      }
       var object = [];
       object['book1'] = data[x1].name;
       object['book2'] = data[x2].name;
@@ -261,7 +267,7 @@ function setFriend() {
       console.log("FRIEND" + response.data);
       var x1 = Math.floor(Math.random()*data.length);
       var birthday = getBirthday(data[x1].id);
-      while (birthday !== undefined && birthday.length < 7) { // get a friend with a birthday
+      while (birthday === 'undefined' || birthday.length < 7) { // get a friend with a birthday
         x1 = Math.floor(Math.random()*data.length);
         birthday = getBirthday(data[x1].id);
       }
