@@ -201,9 +201,9 @@ function postLogin() {
   setMusic();
   setBooks();
   setFriend();
-  console.debug(userInfo);
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
+  console.debug(userInfo);
   startGame();
 }
 
@@ -220,7 +220,6 @@ function setSignificantOther() {
         userInfo['significant_other'] = "Brad Pitt";
     }
   });
-  console.log("set significant other " + userInfo['significant_other']);
 }
 
 function setMusic() {
@@ -245,7 +244,6 @@ function setMusic() {
       userInfo['music'] = object;
     }
   });
-  console.log("set music " + getTwoArtists());
 }
 
 function setBooks() {
@@ -266,7 +264,6 @@ function setBooks() {
       userInfo['books'] = object;
     }
   });
-  console.log("set books " + getTwoBooks());
 }
 
 function setFriend() {
@@ -289,14 +286,13 @@ function setFriend() {
       userInfo['enemy'] = data[x2];
     }
   });
-  console.log("set friend and enemy " + getFriendName() + " " + getEnemyName());
 }
 
 // internal, please don't call.
 function getBirthday(id) {
   FB.api('/' + id, function(response) {
     if (response && !response.error) {
-      console.log("BIRTHDAY " + response.birthday);
+      console.log("BIRTHDAY: " + response.birthday);
       return response.birthday;
     }
   });
