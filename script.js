@@ -202,7 +202,27 @@ function renderState(state){
 	$("#story_box").html(parseBody(state['body']));
 }
 
+function parseGameState(){
+	gameStateString = JSON.stringify(gameState);
+	console.log(gameStateString);
+	gameStateString = gameStateString.split("#friend").join(getFriendName());
+	gameStateString = gameStateString.split("#birthday").join(getFriendBirthday());
+	gameStateString = gameStateString.split("#artist1").join(getTwoArtists()["artist1"]);
+	gameStateString = gameStateString.split("#artist2").join(getTwoArtists()["artist2"]);
+	gameStateString = gameStateString.split("#significant_other").join(getSignificantOther());
+	gameStateString = gameStateString.split("#book1").join(getTwoBooks["book1"]);
+	gameStateString = gameStateString.split("#book2").join(getTwoBooks["book2"]);
+	gameStateString = gameStateString.split("#enemy").join(getEnemyName());
+	gameState = $.parseJSON(gameStateString);
+	console.log(gameState);
+}
 
+function loadGamePage(){
+	$("#welcome").addClass("hidden");
+	$("#game").removeClass("hidden");
+	console.debug(userInfo);
+	startGame();
+}
 
 // State search function, O(n). Finds the last state whose id exactly matches
 // the argument. (we should probably avoid duplicating ids, since that'll be
@@ -223,8 +243,10 @@ function loadingScreen() {
 
 // sets up the map of all the state for this game.
 function postLogin() {
-  loadingScreen();
-  setSignificantOther();
+	setSignificantOther();
+
+
+
   setMusic();
   setBooks();
   setFriend();
@@ -246,6 +268,8 @@ function setSignificantOther() {
     } else {
         userInfo['significant_other'] = "George Clooney Error";
     }
+		setMusic();
+
   });
 }
 
@@ -281,6 +305,9 @@ function setMusic() {
       object['artist2'] = "Macklemore Error";
       userInfo['music'] = object;
     }
+
+		setBooks();
+
   });
 }
 
@@ -312,6 +339,9 @@ function setBooks() {
       object['book2'] = "Men are from Mars, Women are from Venus Error";
       userInfo['books'] = object;
     }
+
+		setFriend();
+
   });
 }
 
@@ -345,6 +375,9 @@ function setFriend() {
       userInfo['enemy'] = "Stephen Hawking Error";
       userInfo['friend'] = "Carl Sagan Error";
     }
+
+		parseGameState();
+		loadGamePage();
   });
 }
 
