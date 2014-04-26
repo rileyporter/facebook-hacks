@@ -25,12 +25,11 @@ function loadGame() {
 }
 
 function postLogin() {
-  console.log("In my javascript file");
-  console.log(FB.getLoginStatus());
   FB.api('/me', function(response) {
     console.log('Good to see you, ' + response.name + '.');
+    console.log('Your birthday is: ' + response.birthday + '.');
   });
-  $("#welcome").addClassName("hidden");
+  $("#welcome").addClass("hidden");
   $("#game").removeClassName("hidden");
 }
 

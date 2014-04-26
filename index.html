@@ -61,7 +61,7 @@
       // Here we run a very simple test of the Graph API after login is successful.
       // This testAPI() function is only called in those cases.
       function testAPI() {
-        postLogin();
+        console.log("testing...");
       }
     </script>
 
@@ -73,7 +73,7 @@
       <div id="welcome">
         <h1>Welcome to Acid Trip Dream</h1>
         <h2>Enter if you dare...</h2>
-        <fb:login-button show-faces="true" data-size="xlarge" id="login" max-rows="1"></fb:login-button>
+        <fb:login-button show-faces="true" data-size="xlarge" onlogin="postLogin" id="login" max-rows="1"></fb:login-button>
       </div>
 
       <div id="game" class="hidden">
