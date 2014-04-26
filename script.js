@@ -32,7 +32,8 @@ function postLogin() {
       console.log('ID: ' + response.id);
       var teams = response.favorite_teams;
       for (var i = 0; i < teams.length; i++) {
-        console.debug(teams[i].i)
+        console.debug(teams[i]);
+        console.debug(teams[i].name);
       }
     }
   });
