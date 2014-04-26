@@ -331,10 +331,10 @@ function parseGameState(){
   gameStateString = JSON.stringify(gameState);
   console.log(gameStateString);
   gameStateString = gameStateString.split("#friend").join(getFriendName());
-  gameStateString = gameStateString.split("#friendBirthday").join(getFriendBirthday());
+  gameStateString = gameStateString.split("#birthday").join(getFriendBirthday());
   gameStateString = gameStateString.split("#artist1").join(getTwoArtists()["artist1"]);
   gameStateString = gameStateString.split("#artist2").join(getTwoArtists()["artist2"]);
-  gameStateString = gameStateString.split("#significantOther", getSignificantOther());
+  gameStateString = gameStateString.split("#significant_other").join(getSignificantOther());
   gameStateString = gameStateString.split("#book1").join(getTwoBooks["book1"]);
   gameStateString = gameStateString.split("#book2").join(getTwoBooks["book2"]);
   gameStateString = gameStateString.split("#enemy").join(getEnemyName());
