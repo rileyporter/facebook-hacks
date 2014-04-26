@@ -330,14 +330,14 @@ function setFriend() {
 function parseGameState(){
   gameStateString = JSON.stringify(gameState);
   console.log(gameStateString);
-  gameStateString.replace("#friend", getFriendName());
-  gameStateString.replace("#friendBirthday", getFriendBirthday());
-  gameStateString.split("#artist1").join(getTwoArtists()["artist1"]);
-  gameStateString.replace("#artist2", getTwoArtists()["artist2"]);
-  gameStateString.replace("#significantOther", getSignificantOther());
-  gameStateString.split("#book1").join(getTwoBooks["book1"]);
-  gameStateString.replace("#book2", getTwoBooks["book2"]);
-  gameStateString.replace("#enemy", getEnemyName());
+  gameStateString = gameStateString.split("#friend").join(getFriendName());
+  gameStateString = gameStateString.split("#friendBirthday").join(getFriendBirthday());
+  gameStateString = gameStateString.split("#artist1").join(getTwoArtists()["artist1"]);
+  gameStateString = gameStateString.split("#artist2").join(getTwoArtists()["artist2"]);
+  gameStateString = gameStateString.split("#significantOther", getSignificantOther());
+  gameStateString = gameStateString.split("#book1").join(getTwoBooks["book1"]);
+  gameStateString = gameStateString.split("#book2").join(getTwoBooks["book2"]);
+  gameStateString = gameStateString.split("#enemy").join(getEnemyName());
   gameState = $.parseJSON(gameStateString);
   console.log(gameState);
 }
