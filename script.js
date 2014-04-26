@@ -9,6 +9,12 @@ $(document).ready(function() {
 	console.log("script file running...");
     loadGame();
     console.log("game state loaded?");
+    $("enter").click(function () {
+    	$("game").removeClass("hidden");
+    	$("welcome").addClass("hidden");
+    	startGame();
+    });
+
 
     // register text action listener
     //$('#response').keypress(takeAction(event));
@@ -104,7 +110,7 @@ function loadGame() {
 // id == "state"). Renders that state then waits on input
 function startGame() {
 	console.log(gameState);
-	var startState = findState("start");
+	var startState = findState("1");
 	currentState = startState;
 	renderState(startState);
 }
