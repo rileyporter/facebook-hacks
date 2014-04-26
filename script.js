@@ -25,6 +25,8 @@ function loadGame() {
 }
 
 function postLogin() {
+  console.log("login: " + FB.getLoginStatus());
+  console.log("auth: " + FB.getAuthResponse());
   FB.api('/me', function(response) {
     if (response && !response.error) {
       console.log('Good to see you, ' + response.name + '.');
@@ -32,19 +34,29 @@ function postLogin() {
       console.log('ID: ' + response.id);
       var teams = response.favorite_teams;
       for (var i = 0; i < teams.length; i++) {
-        console.debug(teams[i]);
-        console.debug(teams[i].name);
+        console.log(teams[i].name);
       }
     }
   });
   FB.api('/me/books', function(response) {
+    console.log("got back a response");
     if (response && !response.error) {
+      console.log("response was good");
       var books = response;
       for (var book in books) {
         console.log(book);
       }
     }
   });
+  FB.abi('/me/friends', function(response) {
+    if (response && !response.error) {
+      var friends = response;
+      for (var i = 0; i < 5; i++) {
+        console.log(friends[i].name);
+      }
+    }
+  }
+  }
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
 }
