@@ -84,15 +84,15 @@
         <fb:login-button show-faces="true" data-size="xlarge" onlogin="postLogin" id="login" max-rows="1"></fb:login-button>
       </div>
 
-      <div id="game" class="hidden">
+      <div id="game">
         <div id="story_box">
           <img id="state_picture" src="logo.jpg" alt="creepy gun image">
           <p>here I am!</p>
         </div>
 
         <div id="typing_box">
-          What will you do?
-          <input type="text" id="response" onkeydown="if (event.keyCode == 13) processResponse()"
+          <div id="prompt">What will you do?</div>
+          <input type="text" id="response" onkeydown="if (event.keyCode == 13) takeAction()"
             maxlength="80" name="bootsie">
         </div>
       </div>
