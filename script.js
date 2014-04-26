@@ -28,7 +28,7 @@ function postLogin() {
   FB.api('/me', function(response) {
     if (response && !response.error) {
       console.log('Good to see you, ' + response.name + '.');
-      console.log('Your birthday is: ' + response + '.');
+      console.debug(response);
       console.log('ID: ' + response.id);
       var teams = response.favorite_teams;
       for (var team in teams) {
