@@ -8,9 +8,9 @@ function postLogin() {
   FB.api('/me', function(response) {
     console.log('Good to see you, ' + response.name + '.');
   });
-  window.location = "game.html";
+  document.getElementById("welcome").addClassName("hidden");
+  document.getElementById("game").removeClassName("hidden");
 }
-
 
 // process response from text box
 function processResponse() {

@@ -5,6 +5,10 @@ body, input {
   font-size: 2em;
 }
 
+.hidden {
+  visibility: none;
+}
+
 #main_window {
   position: relative;
   width: 700px;
@@ -26,7 +30,7 @@ body, input {
 }
 
 #login {
-  width: 500px;
+  width: 100%;
 }
 
 #welcome h1 {
