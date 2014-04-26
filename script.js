@@ -227,14 +227,14 @@ function setMusic() {
   FB.api('/me/music', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      console.debug(response.data);
-
       var x1 = Math.floor(Math.random()*data.length);
       while (data[x1].category !== "Musician/band") {
+        console.log("choosing new music 1");
         x1 = Math.floor(Math.random()*data.length);
       }
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2 || data[x2].category !== "Musician/band") {
+        console.log("choosing new music 2");
         x2 = Math.floor(Math.random()*data.length);
       }
       var object = [];
@@ -252,11 +252,10 @@ function setBooks() {
   FB.api('/me/books', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      console.debug(response.data);
-
       var x1 = Math.floor(Math.random()*data.length);
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2) {
+        console.log("choosing a new book");
         x2 = Math.floor(Math.random()*data.length);
       }
       var object = [];
@@ -274,16 +273,16 @@ function setFriend() {
   FB.api('/me/friends', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      console.debug(response.data);
-      console.log("FRIEND" + response.data);
       var x1 = Math.floor(Math.random()*data.length);
       var birthday = getBirthday(data[x1].id);
       while (birthday === undefined || birthday.length < 7) { // get a friend with a birthday
+        console.log("choosing a new friend");
         x1 = Math.floor(Math.random()*data.length);
         birthday = getBirthday(data[x1].id);
       }
       var x2 = Math.floor(Math.random()*data.length);
-      while (data[x1].id === data[x2].id) { // don't choose the same person
+      while (x1 === x2) { // don't choose the same person
+        console.log("choosing a new enemy");
         x2 = Math.floor(Math.random()*data.length);
       }
       userInfo['friend'] = data[x1];
@@ -297,9 +296,8 @@ function setFriend() {
 function getBirthday(id) {
   FB.api('/' + id, function(response) {
     if (response && !response.error) {
-      console.log("BIRTHDAY" + response.birthday);
-
-        return response.birthday;
+      console.log("BIRTHDAY " + response.birthday);
+      return response.birthday;
     }
   });
 }
