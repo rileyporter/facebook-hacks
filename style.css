@@ -5,7 +5,7 @@ body {
   background-repeat:no-repeat;
   color: #FFA319; /* gold */
   font-family: "Courier New", "Andale mono", monospace;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: normal;
 }
 
@@ -18,7 +18,7 @@ body {
   width: 700px;
   margin: auto;
   height: 300px;
-  margin-top: 23%;
+  margin-top: 25%;
   margin-bottom: 100px;
   border: 5px solid #FFA319; /* gold */
   background: black;
@@ -60,9 +60,9 @@ p {
 
 input {
   border: 0px;
-  width: 698px;
+  width: 700px;
   font-size: 20px;
-  border: 2px solid #FFA319; /* gold */
+  border-top: 2px solid #FFA319; /* gold */
   background-color: black;
   opacity: 0.9;
   color: #FFA319; /* gold */
