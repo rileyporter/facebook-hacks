@@ -90,6 +90,8 @@ function performDefaultAction(action, object){
 
 
 function parseBody(body){
+	console.log("attempting to integrate facebook data");
+	console.log(userInfo)
 	content = body.split(" ");
 	result = "";
 	$.each(content, function(index, word){
