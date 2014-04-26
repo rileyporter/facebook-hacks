@@ -26,11 +26,14 @@ function loadGame() {
 
 function postLogin() {
   FB.api('/me', function(response) {
-    console.log('Good to see you, ' + response.name + '.');
-    console.log('Your birthday is: ' + response.birthday + '.');
+    if (response && !response.error) {
+      console.log('Good to see you, ' + response.name + '.');
+      console.log('Your birthday is: ' + response.birthday + '.');
+      console.log('ID: ' + response.id);
+    }
   });
   $("#welcome").addClass("hidden");
-  $("#game").removeClassName("hidden");
+  $("#game").removeClass("hidden");
 }
 
 // process response from text box
