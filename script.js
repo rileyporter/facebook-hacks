@@ -1,6 +1,6 @@
 var gameState
 var currentState
-var userInfo
+var userInfo = [];
 
 var possessions = []
 var defaultActions = ["help", "possessions", "grab"]
