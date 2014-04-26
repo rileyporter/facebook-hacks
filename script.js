@@ -224,6 +224,11 @@ function setSignificantOther() {
   console.log("set significant other " + userInfo['significant_other']);
 }
 
+function sleep(milliSeconds){
+  var startTime = new Date().getTime(); // get the current time
+  while (new Date().getTime() < startTime + milliSeconds); // hog cpu
+}
+
 function setMusic() {
   FB.api('/me/music', function(response) {
     if (response && !response.error) {
