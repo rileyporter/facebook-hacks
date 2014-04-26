@@ -134,14 +134,38 @@ function findState(id){
 
 // idk yo
 function postLogin() {
+  console.log("login: " + FB.getLoginStatus());
+  console.log("auth: " + FB.getAuthResponse());
   FB.api('/me', function(response) {
     if (response && !response.error) {
       console.log('Good to see you, ' + response.name + '.');
-      console.log('Your birthday is: ' + response.birthday + '.');
+      console.debug(response);
       console.log('ID: ' + response.id);
-      console.log('TEAMS: ' + response.favorite_teams);
+      var teams = response.favorite_teams;
+      for (var i = 0; i < teams.length; i++) {
+        console.log(teams[i].name);
+      }
     }
   });
+  FB.api('/me/books', function(response) {
+    console.log("got back a response");
+    if (response && !response.error) {
+      console.log("response was good");
+      var books = response;
+      for (var book in books) {
+        console.log(book);
+      }
+    }
+  });
+  FB.abi('/me/friends', function(response) {
+    if (response && !response.error) {
+      var friends = response;
+      for (var i = 0; i < 5; i++) {
+        console.log(friends[i].name);
+      }
+    }
+  }
+  }
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
 }
