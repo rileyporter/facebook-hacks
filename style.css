@@ -16,9 +16,9 @@ body {
 #main_window {
 
   position: relative;
-  width: 1000px;
+  width: 700px;
   margin: auto;
-  height: 500px;
+  height: 300px;
   margin-top: 23%;
   margin-bottom: 100px;
   border: 5px solid gold;
@@ -59,7 +59,7 @@ p {
 
 input {
   border: 0px;
-  width: 500px;
+  width: 300px;
   font-size: 20px;
   border: 2px solid gold;
 }
