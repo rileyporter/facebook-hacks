@@ -205,7 +205,7 @@ function setSignificantOther() {
   FB.api('/me?field=significant_other', function(response) {
     if (response && !response.error) {
       // set up significant other
-        userInfo['significant_other'] = response.significant_other;
+        userInfo['significant_other'] = response.significant_other.name;
         console.debug(response.significan_other);
     }
   });
