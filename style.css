@@ -5,7 +5,7 @@ body {
   background-repeat:no-repeat;
   color: #00FF00;
   font-family: "Courier New", "Andale mono", monospace;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .hidden {
@@ -16,7 +16,7 @@ body {
 #main_window {
 
   position: relative;
-  width: 500px;
+  width: 1000px;
   margin: auto;
   height: 500px;
   margin-top: 23%;
@@ -60,7 +60,7 @@ p {
 input {
   border: 0px;
   width: 500px;
-  font-size: 40px;
+  font-size: 20px;
   border: 2px solid gold;
 }
 
