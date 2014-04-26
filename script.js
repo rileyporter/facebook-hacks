@@ -26,12 +26,12 @@ function loadGame() {
 
 function postLogin() {
   console.log("In my javascript file");
-  console.log(FB.getLoginStatus);
+  console.log(FB.getLoginStatus());
   FB.api('/me', function(response) {
     console.log('Good to see you, ' + response.name + '.');
   });
-  $("welcome").addClassName(".hidden");
-  $("game").removeClassName(".hidden");
+  $("#welcome").addClassName("hidden");
+  $("#game").removeClassName("hidden");
 }
 
 // process response from text box
