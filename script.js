@@ -102,7 +102,7 @@ function performDefaultAction(action, command){
         }
       });
 
-			if(object != undefined && ($.inArray(, currentState['objects']) >= 0)){
+			if(object != undefined && ($.inArray(object, currentState['objects']) >= 0)){
 				response = "You've picked up a " + object
 				possessions.push(object);
 			} else {
