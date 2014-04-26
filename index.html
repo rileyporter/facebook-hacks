@@ -37,7 +37,6 @@
           // (1) JavaScript created popup windows are blocked by most browsers unless they
           // result from direct interaction from people using the app (such as a mouse click)
           // (2) it is a bad experience to be continually prompted to login upon page load.
-          $("#enter").removeClass("hidden");
           FB.login(function(response) {
             // handle the response
           }, {scope: 'user_about_me,user_birthday,user_likes,user_friends,user_relationship_details,user_activities,user_relationships,friends_birthday,'});
@@ -80,7 +79,26 @@
         <h1>Welcome to Acid Trip Dream</h1>
         <h2>Enter if you dare...</h2>
         <fb:login-button show-faces="true" data-size="xlarge" onlogin="postLogin" id="login" max-rows="1"></fb:login-button>
-        <button id="enter" class="hidden">Enter</button>
+        <script>
+        FB.getLoginStatus(function(response) {
+              if (response.status === 'connected') {
+                // the user is logged in and has authenticated your
+                // app, and response.authResponse supplies
+                // the user's ID, a valid access token, a signed
+                // request, and the time the access token
+                // and signed request each expire
+                //var uid = response.authResponse.userID;
+                //var accessToken = response.authResponse.accessToken;
+                $("#enter").removeClass("hidden");
+              } else if (response.status === 'not_authorized') {
+                // the user is logged in to Facebook,
+                // but has not authenticated your app
+              } else {
+                // the user isn't logged in to Facebook.
+              }
+             });
+        </script>
+        <button id="enter" "hidden">Enter</button>
       </div>
 
 
