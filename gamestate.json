@@ -1,8 +1,8 @@
 [
   {
   "id": "1",
-  "body": "You wake up in dank, dark room with no windows. The walls bleed, crawl and inch themselves around as if they were a collective of catepillars peeling off the fabric of a ficticious shag carpet, controlled by a shared consciousness. Woah. All you see in the room is a small table. You hear the feint sound of music coming from above you.", 
-  "actions": { 
+  "body": "You wake up in dank, dark room with no windows. The walls bleed, crawl and inch themselves around as if they were a collective of catepillars peeling off the fabric of a ficticious shag carpet, controlled by a shared consciousness. Woah. All you see in the room is a small table. You hear the feint sound of music coming from above you.",
+  "actions": {
     "look": {
         "up" : "2"
     },
@@ -74,7 +74,7 @@
         "wind chime" : "11"
       },
     },
-    "options" : []
+    "objects" : []
   },
   {
     "id" : "11",
@@ -87,7 +87,7 @@
         "key" : "12"
       }
     },
-    "options" : []
+    "objects" : []
   },
   {
     "id" : "12",
@@ -97,10 +97,10 @@
         "back" : "7"
       }
     },
-    "options" : [
+    "objects" : [
       "key"
     ]
-  }
+  },
   {
     "id" : "14",
     "body" : "You walk to door 2 and stand in front of it. You hear a faint clicking sound coming from inside.",
@@ -357,7 +357,7 @@
       },
       "punch" : {
         "#enemy" : "37"
-      }, 
+      },
       "search" : {
         "room" : "38"
       }
@@ -370,7 +370,7 @@
     "action" : {
       "kick" : {
         "pipe" : "39"
-      }, 
+      },
       "search" : {
         "room" : "38"
       },
@@ -410,6 +410,6 @@
     "id" : "39",
     "body" : "You've kicked the pipe in half! Now water is pouring out of the hole and filling the room. #enemy: 'No! No! What are you doing! Nooooo!' As soon as your face is under water, you suddently wake up. Safe and sound in your bed."
     "action" {},
-    "objects" : []  
+    "objects" : []
   }
 ]
