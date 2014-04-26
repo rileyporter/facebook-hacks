@@ -47,7 +47,7 @@
 
 {
   "id": "2",
-  "body": "#book1 You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One 'you'. The vent fits exactly one unit-'you'",
+  "body": "You look up and see a vent above you. It looks like it would fit exactly one human. Like you. One 'you'. The vent fits exactly one unit-'you'",
   "actions": {
     "climb": {
       "table" : "3"
