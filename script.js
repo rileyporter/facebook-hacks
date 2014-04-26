@@ -55,8 +55,7 @@ function postLogin() {
         console.log(friends[i].name);
       }
     }
-  }
-  }
+  });
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
 }
