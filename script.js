@@ -89,6 +89,53 @@ function performDefaultAction(action, object){
 }
 
 
+function parseBody(body){
+	content = body.split(" ");
+	result = "";
+	$.each(content, function(word){
+		if(result.charAt(0) == "#"){
+			console.log("found hashtag on " + result);
+			result += parseKeyword(word);
+		} else {
+			result += word;
+		}
+	});
+	return result;
+}
+
+
+function parseKeyword(keyword){
+	switch(keyword){
+		case "#friend":
+			return getFriendName();
+			break;
+		case "#friendBirthDay":
+			return getFriendBirthday();
+			break;
+		case "#firstArtist":
+			return getTwoArtists()[0];
+			break;
+		case "#secondArtist":
+			return getTwoArtists()[1];
+			break;
+		case "#firstBook":
+			return getTwoBooks[0];
+			break;
+		case "#secondBook":
+			return getTwoBooks()[1];
+			break;
+		case "#significantOther":
+			return getSignificantOther();
+			break;
+		case "#enemy":
+			return getEnemyName();
+			break;
+	}
+	// if not matched just return keyword
+	return keyword;
+}
+
+
 // doesn't do anything. called whenever an action lookup fails
 function reportInvalidAction(){
 	$("#prompt").html("That didn't work. What will you do?")
@@ -121,8 +168,7 @@ function startGame() {
 // parsing in user specific data should happen.
 function renderState(state){
 	$("#prompt").html("What will you do?")
-	$("#story_box").html(state['body']);
-
+	$("#story_box").html(parseBody(state['body']));
 }
 
 
