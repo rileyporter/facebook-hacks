@@ -298,9 +298,11 @@ function setFriend() {
     if (response && !response.error) {
       var data = response.data;
       var x1 = Math.floor(Math.random()*data.length);
-      while (data[x1].birthday === undefined) {
+      var index = 0
+      while (data[x1].birthday === undefined && index < 100) {
         console.log("choosing a new friend");
         x1 = Math.floor(Math.random()*data.length);
+        index += 1;
       }
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2) { // don't choose the same person
