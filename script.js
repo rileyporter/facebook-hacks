@@ -299,7 +299,7 @@ function setFriend() {
     if (response && !response.error) {
       var data = response.data;
       var x1 = Math.floor(Math.random()*data.length);
-      while (data[x1].birthday === undefined || data[x1].birthday.length < 7) {
+      while (data[x1].birthday === undefined) {
         console.log("choosing a new friend");
         x1 = Math.floor(Math.random()*data.length);
       }
