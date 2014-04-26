@@ -289,15 +289,13 @@ function setBooks() {
 }
 
 function setFriend() {
-  FB.api('/me/friends', function(response) {
+  FB.api('me/friends?fields=birthday,name', function(response) {
     if (response && !response.error) {
       var data = response.data;
       var x1 = Math.floor(Math.random()*data.length);
-      var birthday = getBirthday(data[x1].id);
-      while (birthday === undefined || birthday.length < 7) { // get a friend with a birthday
+      while (data[x1].birthday === undefined || birthday.length < 7) {
         console.log("choosing a new friend");
         x1 = Math.floor(Math.random()*data.length);
-        birthday = getBirthday(data[x1].id);
       }
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2) { // don't choose the same person
@@ -321,16 +319,6 @@ function setFriend() {
   });
 }
 
-// internal, please don't call.
-function getBirthday(id) {
-  FB.api('/' + id, function(response) {
-    if (response && !response.error) {
-      console.log("BIRTHDAY: " + response.birthday);
-      return response.birthday;
-    }
-  });
-}
-
 // returns String name
 function getFriendName() {
   return userInfo['friend'].name;
@@ -338,7 +326,7 @@ function getFriendName() {
 
 // returns String MM/YY/DD
 function getFriendBirthday() {
-  return getBirthday(userInfo['friend'].id);
+  return userInfo['friend'].birthday;
 }
 
 // returns map: ["artist1": name, "artist2": name]
