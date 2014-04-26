@@ -157,14 +157,10 @@ function loadGame() {
 // begin the game. Sets the current state to start state (determined by state with
 // id == "state"). Renders that state then waits on input
 function startGame() {
-	setTimeout(function(){
-
-
-		console.log(gameState);
-		var startState = findState("1");
-		currentState = startState;
-		renderState(startState);
-	}, 1000);
+	console.log(gameState);
+	var startState = findState("1");
+	currentState = startState;
+	renderState(startState);
 }
 
 // Given the current state object, render the state passed as object. Right now this

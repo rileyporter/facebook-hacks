@@ -1,7 +1,7 @@
 [
   {
   "id": "1",
-  "body": "You and your friend #friend wake up in dank, dark room with no windows. The walls bleed, crawl and inch themselves around as if they were a collective of catepillars peeling off the fabric of a ficticious shag carpet, controlled by a shared consciousness. Woah. All you see in the room is a small table. You hear the feint sound of music coming from above you.", 
+  "body": "You wake up in dank, dark room with no windows. The walls bleed, crawl and inch themselves around as if they were a collective of catepillars peeling off the fabric of a ficticious shag carpet, controlled by a shared consciousness. Woah. All you see in the room is a small table. You hear the feint sound of music coming from above you.", 
   "actions": { 
     "look": {
         "up" : "2"
