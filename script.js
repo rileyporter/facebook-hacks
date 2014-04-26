@@ -9,6 +9,12 @@ $(document).ready(function() {
 	console.log("script file running...");
     loadGame();
     console.log("game state loaded?");
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          // the user is logged in and has authenticated
+          $("#enter").removeClass("hidden");
+        }
+     });
     $("#enter").click(function () {
     	//$("#game").removeClass("hidden");
     	//$("#welcome").addClass("hidden");
@@ -190,15 +196,20 @@ function findState(id){
 	return result
 }
 
+function loadingScreen() {
+  console.log("set up loading screen");
+}
+
 // sets up the map of all the state for this game.
 function postLogin() {
+  loadingScreen();
   setSignificantOther();
   setMusic();
   setBooks();
   setFriend();
-  console.debug(userInfo);
   $("#welcome").addClass("hidden");
   $("#game").removeClass("hidden");
+  console.debug(userInfo);
   startGame();
 }
 
@@ -206,10 +217,13 @@ function setSignificantOther() {
   FB.api('/me?field=significant_other', function(response) {
     if (response && !response.error) {
       // set up significant other
-        userInfo['significant_other'] = response.significant_other.name;
-        console.debug(response.significan_other);
-    } else {
+      if (response.significant_other === undefined) {
         userInfo['significant_other'] = "George Clooney";
+      } else {
+        userInfo['significant_other'] = response.significant_other.name;
+      }
+    } else {
+        userInfo['significant_other'] = "George Clooney Error";
     }
   });
 }
@@ -218,21 +232,32 @@ function setMusic() {
   FB.api('/me/music', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      console.debug(response.data);
-
       var x1 = Math.floor(Math.random()*data.length);
       while (data[x1].category !== "Musician/band") {
+        console.log("choosing new music 1");
         x1 = Math.floor(Math.random()*data.length);
       }
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2 || data[x2].category !== "Musician/band") {
+        console.log("choosing new music 2");
         x2 = Math.floor(Math.random()*data.length);
+      }
+      if (data[x1] === undefined || data[x2] === undefined) {
+        var object = [];
+        object['artist1'] = "Earth Wind and Fire";
+        object['artist2'] = "Macklemore";
+        userInfo['music'] = object;
       }
       var object = [];
       object['artist1'] = data[x1].name;
       object['artist2'] = data[x2].name;
       console.log("music: ");
       console.debug(object);
+      userInfo['music'] = object;
+    } else {
+      var object = [];
+      object['artist1'] = "Earth Wind and Fire Error";
+      object['artist2'] = "Macklemore Error";
       userInfo['music'] = object;
     }
   });
@@ -242,12 +267,17 @@ function setBooks() {
   FB.api('/me/books', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      console.debug(response.data);
-
       var x1 = Math.floor(Math.random()*data.length);
       var x2 = Math.floor(Math.random()*data.length);
       while (x1 === x2) {
+        console.log("choosing a new book");
         x2 = Math.floor(Math.random()*data.length);
+      }
+      if (data[x1] === undefined || data[x2] === undefined) {
+        var object = [];
+        object['book1'] = "Watership Down";
+        object['book2'] = "Men are from Mars, Women are from Venus";
+        userInfo['books'] = object;
       }
       var object = [];
       object['book1'] = data[x1].name;
@@ -255,40 +285,42 @@ function setBooks() {
       console.log("books: ");
       console.debug(object);
       userInfo['books'] = object;
+    } else {
+      var object = [];
+      object['book1'] = "Watership Down Error";
+      object['book2'] = "Men are from Mars, Women are from Venus Error";
+      userInfo['books'] = object;
     }
   });
 }
 
 function setFriend() {
-  FB.api('/me/friends', function(response) {
+  FB.api('me/friends?fields=birthday,name', function(response) {
     if (response && !response.error) {
       var data = response.data;
-      console.debug(response.data);
-      console.log("FRIEND" + response.data);
       var x1 = Math.floor(Math.random()*data.length);
-      var birthday = getBirthday(data[x1].id);
-      while (birthday === 'undefined' || birthday.length < 7) { // get a friend with a birthday
+      while (data[x1].birthday === undefined || data[x1].birthday.length < 7) {
+        console.log("choosing a new friend");
         x1 = Math.floor(Math.random()*data.length);
-        birthday = getBirthday(data[x1].id);
       }
       var x2 = Math.floor(Math.random()*data.length);
-      while (data[x1].id === data[x2].id) { // don't choose the same person
+      while (x1 === x2) { // don't choose the same person
+        console.log("choosing a new enemy");
         x2 = Math.floor(Math.random()*data.length);
       }
-      userInfo['friend'] = data[x1];
-      userInfo['enemy'] = data[x2];
-    }
-  });
-  console.log("NOOOOOO" + response.data);
-}
-
-// internal, please don't call.
-function getBirthday(id) {
-  FB.api('/' + id, function(response) {
-    if (response && !response.error) {
-      console.log("BIRTHDAY" + response.birthday);
-
-        return response.birthday;
+      if (data[x1] === undefined) {
+        userInfo['friend'] = "Carl Sagan";
+      } else {
+        userInfo['friend'] = data[x1];
+      }
+      if (data[x2] === undefined) {
+        userInfo['enemy'] = "Stephen Hawking";
+      } else {
+        userInfo['enemy'] = data[x2];
+      }
+    } else {
+      userInfo['enemy'] = "Stephen Hawking Error";
+      userInfo['friend'] = "Carl Sagan Error";
     }
   });
 }
@@ -300,7 +332,7 @@ function getFriendName() {
 
 // returns String MM/YY/DD
 function getFriendBirthday() {
-  return getBirthday(userInfo['friend'].id);
+  return userInfo['friend'].birthday;
 }
 
 // returns map: ["artist1": name, "artist2": name]

@@ -3,29 +3,31 @@ body {
   background-image:url('acid_dream.jpg');
   background-size: 100%;
   background-repeat:no-repeat;
-  color: #00FF00;
+  color: #66FF33; /* green */
   font-family: "Courier New", "Andale mono", monospace;
   font-size: 1em;
+  font-weight: normal;
 }
 
 .hidden {
   display: none;
-
 }
 
 #main_window {
-
   position: relative;
   width: 700px;
   margin: auto;
   height: 300px;
   margin-top: 23%;
   margin-bottom: 100px;
-  border: 5px solid gold;
+  border: 5px solid #FFA319; /* gold */
   background: black;
   opacity: 0.9;
 }
 
+#login * {
+  text-align: center;
+}
 
 #state_picture {
   height: 220px;
@@ -37,20 +39,19 @@ body {
   text-align: center;
 }
 
-#login {
-  width: 100%;
-}
-
 #welcome h1 {
-  font-size: 2em;
+  font-size: 3em;
+  font-weight: normal;
 }
 
 #welcome h2 {
-  font-size: 1em;
+  font-size: 2em;
+  color: #A31919; /* red */
+  font-weight: normal;
 }
 
 p {
-  border: 2px solid gold;
+  border: 2px solid #FFA319; /* gold */
   height: 250px;
   position: absolute;
   top: 200px;
@@ -61,7 +62,7 @@ input {
   border: 0px;
   width: 700px;
   font-size: 20px;
-  border: 2px solid gold;
+  border: 2px solid #FFA319; /* gold */
 }
 
 #story_box {
